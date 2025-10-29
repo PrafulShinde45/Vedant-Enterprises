@@ -1,0 +1,4 @@
+- [x] Move src/app/ directory to app/ at root
+- [x] Remove empty src/ directory
+- [ ] Redeploy on Vercel
+- [ ] Reset Root Directory in Vercel settings if set
