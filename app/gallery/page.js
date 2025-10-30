@@ -8,66 +8,66 @@ import { Filter, X, Eye } from 'lucide-react';
 const galleryItems = [
   {
     id: 1,
-    image: '/assets/images/rcc-pipes.jpg',
-    title: 'RCC Pipes',
-    description: 'Durable and ready-made from Pune, India',
+    image: '/assets/150mm-dia-rcc-pipe.webp',
+    title: 'RCC Pipe 150mm',
+    description: 'Durable 150mm diameter RCC pipe',
     category: 'pipes'
   },
   {
     id: 2,
-    image: '/assets/images/compound-wall.jpg',
-    title: 'Compound Wall',
-    description: 'Strong and reliable boundary solutions',
-    category: 'walls'
+    image: '/assets/200mm-rcc-pipe.webp',
+    title: 'RCC Pipe 200mm',
+    description: 'High-quality 200mm RCC pipe',
+    category: 'pipes'
   },
   {
     id: 3,
-    image: '/assets/images/septic-tank.jpg',
-    title: 'Septic Tank',
-    description: 'High-quality septic tank systems',
-    category: 'tanks'
+    image: '/assets/300mm-cement-pipe.webp',
+    title: 'Cement Pipe 300mm',
+    description: 'Strong 300mm cement pipe',
+    category: 'pipes'
   },
   {
     id: 4,
-    image: '/assets/images/fencing-post.jpg',
-    title: 'Fencing Post',
-    description: 'Robust fencing solutions',
-    category: 'fencing'
+    image: '/assets/half-round-pipe-300x400.webp',
+    title: 'Half Round Pipe',
+    description: 'Versatile half-round pipe design',
+    category: 'pipes'
   },
   {
     id: 5,
-    image: '/assets/images/cover-block.jpg',
-    title: 'Cover Block',
-    description: 'Premium cover blocks for construction',
-    category: 'blocks'
+    image: '/assets/rcc-spun-pipe-300x400.webp',
+    title: 'RCC Spun Pipe',
+    description: 'Precision spun RCC pipe',
+    category: 'pipes'
   },
   {
     id: 6,
-    image: '/assets/images/drain-cover.jpg',
-    title: 'Drain Cover',
-    description: 'Heavy-duty drain covers',
+    image: '/assets/manh1-150x150.webp',
+    title: 'Manhole Cover 1',
+    description: 'Heavy-duty manhole cover',
     category: 'covers'
   },
   {
     id: 7,
-    image: '/assets/images/boundary-wall.jpg',
-    title: 'Boundary Wall',
-    description: 'Secure boundary wall systems',
-    category: 'walls'
+    image: '/assets/st1-150x150.webp',
+    title: 'Septic Tank 1',
+    description: 'Reliable septic tank system',
+    category: 'tanks'
   },
   {
     id: 8,
-    image: '/assets/images/chamber-cover.jpg',
-    title: 'Chamber Cover',
-    description: 'Durable chamber covers',
+    image: '/assets/cc1-150x150.webp',
+    title: 'Chamber Cover 1',
+    description: 'Durable chamber cover',
     category: 'covers'
   },
   {
     id: 9,
-    image: '/assets/images/culvert-pipe.jpg',
-    title: 'Culvert Pipe',
-    description: 'Reliable culvert pipe solutions',
-    category: 'pipes'
+    image: '/assets/g-1-.webp',
+    title: 'General Product',
+    description: 'High-quality construction material',
+    category: 'walls'
   }
 ];
 
@@ -108,8 +108,10 @@ export default function Gallery() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative gradient-hero text-white py-20 md:py-32">
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+      <section className="relative text-white py-20 md:py-32 bg-cover bg-center">
+        {/* Background Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-green-900/50 via-transparent to-green-800/50"></div>
+        <div className="absolute inset-0 bg-[url('/assets/bg-pic.webp')] bg-cover bg-center opacity-20"></div>
         <div className="relative max-w-6xl mx-auto px-6 md:px-16 text-center">
           <div className="animate-fade-in-up">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Product Gallery</h1>
@@ -193,23 +195,7 @@ export default function Gallery() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-20 gradient-primary text-white">
-          <div className="max-w-4xl mx-auto px-6 md:px-16 text-center animate-fade-in-up">
-            <h2 className="text-4xl font-bold mb-6">Need Something Specific?</h2>
-            <p className="text-xl mb-8 leading-relaxed">
-              Can't find what you're looking for? Contact us for custom solutions and bulk orders.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact" className="bg-white text-green-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors">
-                Request Custom Quote
-              </a>
-              <a href="tel:+918048619027" className="border-2 border-white hover:bg-white hover:text-green-700 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300">
-                Call for Details
-              </a>
-            </div>
-          </div>
-        </section>
+
       </main>
 
       <Footer />
