@@ -6,6 +6,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { MapPin, Mail, Phone, FileText, Send, CheckCircle, Clock, Users, Award, Star, ArrowRight } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 function ContactForm() {
   const searchParams = useSearchParams();
   const product = searchParams.get('product');
