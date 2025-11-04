@@ -8,21 +8,21 @@ import { Filter, X, Eye } from 'lucide-react';
 const galleryItems = [
   {
     id: 1,
-    image: '/assets/150mm-dia-rcc-pipe.webp',
+    image: '/assets/150mm-dia-rcc-pipe-300x400.webp',
     title: 'RCC Pipe 150mm',
     description: 'Durable 150mm diameter RCC pipe',
     category: 'pipes'
   },
   {
     id: 2,
-    image: '/assets/200mm-rcc-pipe.webp',
+    image: '/assets/200mm-rcc-pipe-300x400.webp',
     title: 'RCC Pipe 200mm',
     description: 'High-quality 200mm RCC pipe',
     category: 'pipes'
   },
   {
     id: 3,
-    image: '/assets/300mm-cement-pipe.webp',
+    image: '/assets/300mm-cement-pipe-300x400.webp',
     title: 'Cement Pipe 300mm',
     description: 'Strong 300mm cement pipe',
     category: 'pipes'
@@ -43,28 +43,91 @@ const galleryItems = [
   },
   {
     id: 6,
-    image: '/assets/manh1-150x150.webp',
-    title: 'Manhole Cover 1',
+    image: '/assets/rcc-cement-pipe-300x400.webp',
+    title: 'RCC Cement Pipe',
+    description: 'High-strength RCC cement pipe',
+    category: 'pipes'
+  },
+  {
+    id: 7,
+    image: '/assets/manh1-300x400.webp',
+    title: 'Manhole Cover Type 1',
     description: 'Heavy-duty manhole cover',
     category: 'covers'
   },
   {
-    id: 7,
-    image: '/assets/st1-150x150.webp',
-    title: 'Septic Tank 1',
-    description: 'Reliable septic tank system',
-    category: 'tanks'
-  },
-  {
     id: 8,
-    image: '/assets/cc1-150x150.webp',
-    title: 'Chamber Cover 1',
-    description: 'Durable chamber cover',
+    image: '/assets/manh2-300x400.webp',
+    title: 'Manhole Cover Type 2',
+    description: 'Industrial grade manhole cover',
     category: 'covers'
   },
   {
     id: 9,
-    image: '/assets/g-1-.webp',
+    image: '/assets/manh3-300x400.webp',
+    title: 'Manhole Cover Type 3',
+    description: 'Reinforced manhole cover',
+    category: 'covers'
+  },
+  {
+    id: 10,
+    image: '/assets/st1-300x400.webp',
+    title: 'Septic Tank Model 1',
+    description: 'Reliable septic tank system',
+    category: 'tanks'
+  },
+  {
+    id: 11,
+    image: '/assets/st2-300x400.webp',
+    title: 'Septic Tank Model 2',
+    description: 'Advanced septic tank design',
+    category: 'tanks'
+  },
+  {
+    id: 12,
+    image: '/assets/st3-300x400.webp',
+    title: 'Septic Tank Model 3',
+    description: 'Premium septic tank solution',
+    category: 'tanks'
+  },
+  {
+    id: 13,
+    image: '/assets/cc1-300x400.webp',
+    title: 'Chamber Cover Type 1',
+    description: 'Durable chamber cover',
+    category: 'covers'
+  },
+  {
+    id: 14,
+    image: '/assets/cc2-300x400.webp',
+    title: 'Chamber Cover Type 2',
+    description: 'Weather-resistant chamber cover',
+    category: 'covers'
+  },
+  {
+    id: 15,
+    image: '/assets/cc3-300x400.webp',
+    title: 'Chamber Cover Type 3',
+    description: 'Heavy-duty chamber cover',
+    category: 'covers'
+  },
+  {
+    id: 16,
+    image: '/assets/WhatsApp-Image-2025-02-01-at-6.07.07-PM-300x400.webp',
+    title: 'Construction Material',
+    description: 'Quality construction material',
+    category: 'walls'
+  },
+  {
+    id: 17,
+    image: '/assets/slider2.webp',
+    title: 'Construction Equipment',
+    description: 'Advanced construction equipment and machinery',
+    category: 'equipment'
+  },
+  {
+    id: 18,
+    image: '/assets/g2.webp',
     title: 'General Product',
     description: 'High-quality construction material',
     category: 'walls'
@@ -76,9 +139,8 @@ const categories = [
   { id: 'pipes', name: 'Pipes', count: galleryItems.filter(item => item.category === 'pipes').length },
   { id: 'walls', name: 'Walls', count: galleryItems.filter(item => item.category === 'walls').length },
   { id: 'tanks', name: 'Tanks', count: galleryItems.filter(item => item.category === 'tanks').length },
-  { id: 'fencing', name: 'Fencing', count: galleryItems.filter(item => item.category === 'fencing').length },
-  { id: 'blocks', name: 'Blocks', count: galleryItems.filter(item => item.category === 'blocks').length },
-  { id: 'covers', name: 'Covers', count: galleryItems.filter(item => item.category === 'covers').length }
+  { id: 'covers', name: 'Covers', count: galleryItems.filter(item => item.category === 'covers').length },
+  { id: 'equipment', name: 'Equipment', count: galleryItems.filter(item => item.category === 'equipment').length }
 ];
 
 export default function Gallery() {
@@ -111,10 +173,10 @@ export default function Gallery() {
       <section className="relative text-white py-20 md:py-32 bg-cover bg-center">
         {/* Background Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-green-900/50 via-transparent to-green-800/50"></div>
-        <div className="absolute inset-0 bg-[url('/assets/bg-pic.webp')] bg-cover bg-center opacity-20"></div>
+        <div className="absolute inset-0 bg-[url('/assets/slider2.webp')] bg-cover bg-center opacity-20"></div>
         <div className="relative max-w-6xl mx-auto px-6 md:px-16 text-center">
           <div className="animate-fade-in-up">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Product Gallery</h1>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Concrete Innovations</h1>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
               Explore our comprehensive range of high-quality construction materials, each crafted with precision and built to last.
             </p>
@@ -227,7 +289,7 @@ export default function Gallery() {
                 <p className="text-lg text-gray-600 mb-6">{selectedImage.description}</p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
-                    href="/contact"
+                    href={`/contact?product=${encodeURIComponent(selectedImage.title)}`}
                     className="bg-gradient-to-r from-green-600 to-green-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-700 hover:to-green-800 transition-all duration-300 text-center"
                   >
                     Get Quote

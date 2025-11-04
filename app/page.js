@@ -1,9 +1,28 @@
 
+'use client';
+
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { ArrowRight, Star, Users, Award, Truck } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    '/assets/150mm-dia-rcc-pipe-300x400.webp',
+    '/assets/slider2.webp',
+    '/assets/bg-pic.webp'
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+    }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
   const featuredProducts = [
     {
       id: 1,
@@ -37,10 +56,21 @@ export default function Home() {
       <Navbar />
 
   {/* Hero Section */}
-<section className="relative text-white py-20 md:py-32 bg-cover bg-center">
+<section className="relative text-white py-20 md:py-32 bg-cover bg-center overflow-hidden">
+  {/* Background Slider */}
+  <div className="absolute inset-0">
+    {slides.map((slide, index) => (
+      <div
+        key={index}
+        className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+          index === currentSlide ? 'opacity-20' : 'opacity-0'
+        }`}
+        style={{ backgroundImage: `url(${slide})` }}
+      ></div>
+    ))}
+  </div>
   {/* Background Overlay */}
   <div className="absolute inset-0 bg-gradient-to-br from-green-900/50 via-transparent to-green-800/50"></div>
-  <div className="absolute inset-0 bg-[url('/assets/bg-pic.webp')] bg-cover bg-center opacity-20"></div>
 
   <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-16 text-center">
     <div className="animate-fade-in-up">
@@ -113,20 +143,13 @@ export default function Home() {
                 <p className="text-xl text-gray-600 leading-relaxed mb-8">
                   Leading provider of high-quality construction materials in Pune, Maharashtra. We are committed to excellence, sustainability, and innovation, delivering premium solutions that empower builders and developers to create lasting infrastructure.
                 </p>
-                <div className="flex flex-wrap gap-4">
-                  <div className="bg-white rounded-lg shadow-md px-4 py-3 hover-lift">
-                    <div className="text-2xl font-bold text-green-600">500+</div>
-                    <div className="text-sm text-gray-600">Happy Customers</div>
-                  </div>
-                  <div className="bg-white rounded-lg shadow-md px-4 py-3 hover-lift">
-                    <div className="text-2xl font-bold text-blue-600">15+</div>
-                    <div className="text-sm text-gray-600">Years Experience</div>
-                  </div>
-                  <div className="bg-white rounded-lg shadow-md px-4 py-3 hover-lift">
-                    <div className="text-2xl font-bold text-purple-600">1000+</div>
-                    <div className="text-sm text-gray-600">Projects Completed</div>
-                  </div>
-                </div>
+                <a
+                  href="/about"
+                  className="inline-flex items-center bg-gradient-to-r from-green-600 to-green-700 text-white px-8 py-3 rounded-lg font-semibold hover:from-green-700 hover:to-green-800 transition-all duration-300 hover:scale-105"
+                >
+                  Learn More
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </a>
               </div>
               <div className="flex-1 animate-stagger-2">
                 <div className="relative">
@@ -152,79 +175,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Mission Section */}
-        <section className="py-20 bg-gradient-to-br from-[#f8f9fa] via-white to-[#fdfbf8] relative overflow-hidden">
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-20 right-20 w-48 h-48 bg-purple-500 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
-            <div className="absolute bottom-20 left-20 w-36 h-36 bg-green-500 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }}></div>
-          </div>
-          <div className="relative max-w-7xl mx-auto px-6 md:px-16">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
-              <div className="flex-1 animate-stagger-3">
-                <div className="relative">
-                  <div className="rounded-3xl overflow-hidden shadow-2xl hover-lift transform hover:scale-105 transition-all duration-500">
-                    <img
-                      src="/assets/Vedant-enterprises-9001_page-0001-1087x1536.webp"
-                      alt="Vedant Enterprises ISO 9001 Certification"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-xl p-4 animate-float" style={{ animationDelay: '1s' }}>
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center mr-3">
-                      <Truck className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-bold text-gray-800">Growing</div>
-                      <div className="text-sm text-gray-600">Strong</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex-1 animate-stagger-4">
-                <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 px-4 py-2 rounded-full mb-6">
-                  <Award className="w-5 h-5 text-blue-600 mr-2" />
-                  <span className="text-sm font-semibold text-gray-700">Our Driving Force</span>
-                </div>
-                <h2 className="text-5xl md:text-6xl font-bold text-gray-800 mb-6 bg-gradient-to-r from-gray-800 via-blue-600 to-gray-800 bg-clip-text text-transparent">
-                  Our Mission: Building Tomorrow's Infrastructure Today
-                </h2>
-                <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                  To deliver premium construction materials and solutions that empower our clients to build a sustainable and resilient future. We combine quality craftsmanship, innovative products, and environmental responsibility to create infrastructure that stands the test of time.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="bg-white rounded-xl shadow-md p-4 hover-lift">
-                    <div className="flex items-center mb-2">
-                      <Award className="w-6 h-6 text-green-600 mr-2" />
-                      <span className="font-semibold text-gray-800">Quality</span>
-                    </div>
-                    <p className="text-sm text-gray-600">Rigorous testing and standards</p>
-                  </div>
-                  <div className="bg-white rounded-xl shadow-md p-4 hover-lift">
-                    <div className="flex items-center mb-2">
-                      <Users className="w-6 h-6 text-blue-600 mr-2" />
-                      <span className="font-semibold text-gray-800">Expertise</span>
-                    </div>
-                    <p className="text-sm text-gray-600">Decades of industry knowledge</p>
-                  </div>
-                  <div className="bg-white rounded-xl shadow-md p-4 hover-lift">
-                    <div className="flex items-center mb-2">
-                      <Truck className="w-6 h-6 text-purple-600 mr-2" />
-                      <span className="font-semibold text-gray-800">Delivery</span>
-                    </div>
-                    <p className="text-sm text-gray-600">Timely and reliable service</p>
-                  </div>
-                  <div className="bg-white rounded-xl shadow-md p-4 hover-lift">
-                    <div className="flex items-center mb-2">
-                      <Star className="w-6 h-6 text-red-600 mr-2" />
-                      <span className="font-semibold text-gray-800">Customer First</span>
-                    </div>
-                    <p className="text-sm text-gray-600">Your success is our priority</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+
 
         {/* Featured Products */}
         <section id="products" className="py-20">

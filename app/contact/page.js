@@ -1,17 +1,23 @@
 
 
+
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { MapPin, Mail, Phone, FileText, Send, CheckCircle, Clock, Users, Award, Star, ArrowRight } from 'lucide-react';
 
 export default function Contact() {
+  const searchParams = useSearchParams();
+  const product = searchParams.get('product');
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    mobile: '',
+    message: product ? `I am interested in getting a quote for ${product}. Please provide more details.` : ''
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -29,7 +35,7 @@ export default function Contact() {
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: '', email: '', mobile: '', message: product ? `I am interested in getting a quote for ${product}. Please provide more details.` : '' });
     }, 3000);
   };
 
@@ -80,7 +86,7 @@ export default function Contact() {
       <section className="relative text-white py-20 md:py-32 bg-cover bg-center overflow-hidden">
         {/* Background Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-green-900/60 via-transparent to-green-800/60"></div>
-        <div className="absolute inset-0 bg-[url('/assets/bg-pic.webp')] bg-cover bg-center opacity-20"></div>
+        <div className="absolute inset-0 bg-[url('/assets/g2.webp')] bg-cover bg-center opacity-20"></div>
         {/* Floating Elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 left-10 w-16 h-16 bg-green-400 rounded-full blur-2xl animate-float opacity-30"></div>
@@ -226,7 +232,7 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 text-lg"
+                        className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 text-lg placeholder-black/50"
                         placeholder="Your full name"
                       />
                     </div>
@@ -240,10 +246,24 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 text-lg"
+                        className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 text-lg placeholder-black/50"
                         placeholder="your.email@example.com"
                       />
                     </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="mobile" className="block text-lg font-semibold text-gray-700 mb-3">Mobile Number</label>
+                    <input
+                      type="tel"
+                      id="mobile"
+                      name="mobile"
+                      value={formData.mobile}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 text-lg placeholder-black/50"
+                      placeholder="Your mobile number"
+                    />
                   </div>
 
                   <div>
@@ -255,8 +275,9 @@ export default function Contact() {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 resize-none text-lg"
+                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 resize-none text-lg placeholder-black/50"
                       placeholder="Tell us about your project, requirements, or any questions you have..."
+                      style={{ color: product ? 'black' : 'inherit' }}
                     ></textarea>
                   </div>
 
@@ -276,38 +297,7 @@ export default function Contact() {
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section className="py-20 bg-gradient-to-br from-white via-gray-50 to-white">
-          <div className="max-w-6xl mx-auto px-6 md:px-16">
-            <div className="text-center mb-16 animate-fade-in-up">
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">What Our Clients Say</h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Don't just take our word for it. Here's what our satisfied customers have to say about working with Vedant Enterprises.
-              </p>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-2xl shadow-xl p-8 hover-lift animate-bounce-in"
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                >
-                  <div className="flex items-center mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-                  <p className="text-gray-600 mb-6 italic leading-relaxed">"{testimonial.message}"</p>
-                  <div>
-                    <h4 className="font-bold text-gray-800">{testimonial.name}</h4>
-                    <p className="text-sm text-gray-500">{testimonial.role}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
 
       </main>
