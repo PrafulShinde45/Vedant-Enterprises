@@ -1,33 +1,40 @@
+
+
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import { Eye } from 'lucide-react';
 
-export default function RCCSpunPipe() {
+export default function HeavyDutyPlainDrainCover() {
+  const pricingData = [
+    { size: '1200 MM X 1200 MM', price: 'Contact for Pricing' }
+  ];
+
   const relatedProducts = [
     {
-      name: 'RCC Pipe All Sizes',
-      image: '/assets/150mm-dia-rcc-pipe.webp',
-      link: '/products/rcc-pipe-all-sizes'
+      name: 'RCC Manhole Cover in all size',
+      image: '/assets/manh1-300x400.webp',
+      link: '/products/rcc-manhole-cover-all-sizes'
     },
     {
-      name: 'RCC Pipe 200mm Dia',
-      image: '/assets/200mm-rcc-pipe.webp',
-      link: '/products/rcc-pipe-200mm'
+      name: '1200 MM X 1200 MM Heavy Duty Perforated Drain Cover',
+      image: '/assets/manh3-300x400.webp',
+      link: '/products/1200mm-x-1200mm-heavy-duty-perforated-drain-cover'
     },
     {
-      name: 'RCC Cement Pipe',
-      image: '/assets/rcc-cement-pipe.webp',
-      link: '#'
+      name: 'RCC Circular Manhole Cover',
+      image: '/assets/manh1-300x400.webp',
+      link: '/products/rcc-circular-manhole-cover'
     },
     {
-      name: 'Half Round Pipe',
-      image: '/assets/half-round-pipe-300x400.webp',
-      link: '#'
+      name: 'Concrete Chamber Cover',
+      image: '/assets/cc1-300x400.webp',
+      link: '/products/concrete-chamber-cover'
     }
   ];
 
   return (
     <div className="min-h-screen flex flex-col">
+      <div className="h-32"></div> {/* Spacer for fixed navbar */}
       <Navbar />
 
       <main className="flex-1 bg-gray-50">
@@ -37,10 +44,10 @@ export default function RCCSpunPipe() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               {/* Image */}
               <div className="animate-slide-in-left">
-                <div className="rounded-3xl overflow-hidden shadow-2xl hover-lift">
+                <div className="h-96 rounded-3xl overflow-hidden shadow-2xl hover-lift">
                   <img
-                    src="/assets/rcc-spun-pipe-300x400.webp"
-                    alt="RCC Spun Pipe"
+                    src="/assets/manh2-300x400.webp"
+                    alt="1200 MM X 1200 MM Heavy Duty Plain Drain Cover"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -50,13 +57,16 @@ export default function RCCSpunPipe() {
               <div className="animate-slide-in-right">
                 <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
                   <h2 className="text-4xl font-bold text-gray-800 mb-6">
-                    RCC Spun Pipe
+                    1200 MM X 1200 MM Heavy Duty Plain Drain Cover
                   </h2>
                   <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                    Our RCC spun pipes are manufactured using advanced centrifugal spinning technology, ensuring uniform wall thickness, superior strength, and excellent durability. Available in various sizes and classes to meet different application requirements.
+                    Heavy duty plain drain cover designed for high traffic areas. Features superior strength and durability for demanding drainage applications.
                   </p>
+                  <div className="text-lg font-semibold text-green-600 mb-6">
+                    Approx. Price: Rs 1,350 / Piece <span className="text-sm text-gray-500">(Get Latest Price)</span>
+                  </div>
                   <div className="bg-gradient-to-r from-green-100 to-blue-100 px-4 py-2 rounded-lg inline-block">
-                    <span className="font-semibold text-gray-700">CATEGORY: RCC PIPE</span>
+                    <span className="font-semibold text-gray-700">CATEGORY: MANHOLE COVER</span>
                   </div>
                 </div>
               </div>
@@ -64,97 +74,87 @@ export default function RCCSpunPipe() {
           </div>
         </section>
 
-        {/* Features and Pricing */}
+        {/* Product Details */}
         <section className="py-20 bg-white">
           <div className="max-w-6xl mx-auto px-6 md:px-16">
             <div className="text-center mb-12 animate-fade-in-up">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Features</h2>
+              <h2 className="text-3xl font-bold text-gray-800 mb-4">Product Details</h2>
               <p className="text-lg text-gray-600">
-                Key features of our RCC spun pipes
+                Detailed specifications and features of our Heavy Duty Plain Drain Cover
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               <div className="bg-gray-50 rounded-xl p-6">
-                <ul className="text-gray-600 space-y-3">
-                  <li className="flex items-start">
-                    <span className="text-green-600 mr-2">•</span>
-                    Impeccable finish
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-600 mr-2">•</span>
-                    High strength
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-600 mr-2">•</span>
-                    Ability to tolerate harsh weathering condition
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-600 mr-2">•</span>
-                    Sturdy construction
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-600 mr-2">•</span>
-                    Longer functional life
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-600 mr-2">•</span>
-                    Dimensional accuracy
-                  </li>
-                </ul>
+                <h3 className="text-xl font-semibold text-gray-800 mb-4">Specifications</h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <span className="font-medium text-gray-700">Shape:</span>
+                    <span className="text-gray-600">Square</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-medium text-gray-700">Material:</span>
+                    <span className="text-gray-600">RCC</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-medium text-gray-700">Brand:</span>
+                    <span className="text-gray-600">Vedant Enterprises</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-medium text-gray-700">Usage/Application:</span>
+                    <span className="text-gray-600">Heavy Duty Drainage</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-medium text-gray-700">Color:</span>
+                    <span className="text-gray-600">Gray</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-medium text-gray-700">Size:</span>
+                    <span className="text-gray-600">1200 MM X 1200 MM</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-medium text-gray-700">Type:</span>
+                    <span className="text-gray-600">Plain</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-medium text-gray-700">I Deal In:</span>
+                    <span className="text-gray-600">New Only</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-medium text-gray-700">Country of Origin:</span>
+                    <span className="text-gray-600">Made in India</span>
+                  </div>
+                </div>
               </div>
 
               <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">Available Sizes and Prices</h3>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead className="bg-green-100">
-                      <tr>
-                        <th className="px-3 py-2 text-left font-semibold text-gray-700">Size</th>
-                        <th className="px-3 py-2 text-left font-semibold text-gray-700">Price/Meter</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-200">
-                      <tr>
-                        <td className="px-3 py-2 text-gray-800">150 MM</td>
-                        <td className="px-3 py-2 text-gray-800">160</td>
-                      </tr>
-                      <tr>
-                        <td className="px-3 py-2 text-gray-800">200 MM</td>
-                        <td className="px-3 py-2 text-gray-800">210</td>
-                      </tr>
-                      <tr>
-                        <td className="px-3 py-2 text-gray-800">250 MM</td>
-                        <td className="px-3 py-2 text-gray-800">260</td>
-                      </tr>
-                      <tr>
-                        <td className="px-3 py-2 text-gray-800">300 MM</td>
-                        <td className="px-3 py-2 text-gray-800">300</td>
-                      </tr>
-                      <tr>
-                        <td className="px-3 py-2 text-gray-800">450 MM</td>
-                        <td className="px-3 py-2 text-gray-800">640</td>
-                      </tr>
-                      <tr>
-                        <td className="px-3 py-2 text-gray-800">600 MM</td>
-                        <td className="px-3 py-2 text-gray-800">840</td>
-                      </tr>
-                      <tr>
-                        <td className="px-3 py-2 text-gray-800">900 MM</td>
-                        <td className="px-3 py-2 text-gray-800">1800</td>
-                      </tr>
-                      <tr>
-                        <td className="px-3 py-2 text-gray-800">1200 MM</td>
-                        <td className="px-3 py-2 text-gray-800">3000</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div className="mt-4 bg-gradient-to-r from-green-100 to-blue-100 px-4 py-2 rounded-lg inline-block">
-                  <span className="font-semibold text-gray-700">CATEGORY: RCC PIPE</span>
-                </div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-4">Features</h3>
+                <ul className="text-gray-600 space-y-3">
+                  <li className="flex items-start">
+                    <span className="text-green-600 mr-2">•</span>
+                    Heavy duty construction
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 mr-2">•</span>
+                    High load bearing capacity
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 mr-2">•</span>
+                    Plain surface design
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 mr-2">•</span>
+                    Corrosion resistant
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 mr-2">•</span>
+                    Suitable for high traffic areas
+                  </li>
+                </ul>
               </div>
             </div>
+
+
           </div>
         </section>
 
@@ -162,9 +162,9 @@ export default function RCCSpunPipe() {
         <section className="py-20 bg-gray-50">
           <div className="max-w-6xl mx-auto px-6 md:px-16">
             <div className="text-center mb-12 animate-fade-in-up">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Related RCC Pipe Products</h2>
+              <h2 className="text-3xl font-bold text-gray-800 mb-4">Related Manhole Cover Products</h2>
               <p className="text-lg text-gray-600">
-                Explore other RCC pipe options from our collection
+                Explore other manhole cover options from our collection
               </p>
             </div>
 
@@ -201,11 +201,11 @@ export default function RCCSpunPipe() {
           <div className="max-w-4xl mx-auto px-6 md:px-16 text-center">
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Need a Quote?</h2>
             <p className="text-lg text-gray-600 mb-8">
-              Contact us for pricing, custom orders, or any questions about our RCC spun pipes.
+              Contact us for pricing, custom orders, or any questions about our Heavy Duty Plain Drain Covers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="/contact?product=RCC Spun Pipe"
+                href="/contact?product=1200 MM X 1200 MM Heavy Duty Plain Drain Cover"
                 className="bg-gradient-to-r from-green-600 to-green-700 text-white px-8 py-3 rounded-lg font-semibold hover:from-green-700 hover:to-green-800 transition-all duration-300"
               >
                 Get Quote

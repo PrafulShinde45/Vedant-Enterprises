@@ -173,9 +173,15 @@ select:focus {
   outline-offset: 2px;
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling removed to fix scrolling issues */
 html {
-  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  overflow: visible;
+  height: auto;
 }
 
 /* Loading states */

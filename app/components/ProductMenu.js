@@ -99,7 +99,7 @@ export default function ProductMenu() {
                     {menu.subcategories.map((sub, subIndex) => (
                       <Link
                         key={subIndex}
-                        href={sub === 'RCC Pipe 200mm Dia' ? '/products/rcc-pipe-200mm' : sub === '(Np2/Np3/Np4) RCC Pipe All size of Dia' ? '/products/rcc-pipe-all-sizes' : sub === 'RCC Spun Pipe' ? '/products/rcc-spun-pipe' : '#'}
+                        href={sub === 'RCC Pipe 200mm Dia' ? '/products/rcc-pipe-200mm' : sub === '(Np2/Np3/Np4) RCC Pipe All size of Dia' ? '/products/rcc-pipe-all-sizes' : sub === 'RCC Spun Pipe' ? '/products/rcc-spun-pipe' : sub === 'RCC Cement Pipe' ? '/products/rcc-cement-pipe' : sub === '300 MM Cement Pipe' ? '/products/300-mm-cement-pipe' : sub === 'RCC Half Round Pipe' ? '/products/rcc-half-round-pipe' : sub === 'Readymade RCC Septic Tank' ? '/products/readymade-rcc-septic-tank' : sub === '600 MM Dia RCC Septic Tank' ? '/products/600-mm-dia-rcc-septic-tank' : sub === '900 MM Dia RCC Septic Tank' ? '/products/900-mm-dia-rcc-septic-tank' : sub === '1200 MM Dia RCC Septic Tank' ? '/products/1200-mm-dia-rcc-septic-tank' : sub === '1800 MM Dia RCC Septic Tank' ? '/products/1800-mm-dia-rcc-septic-tank' : sub === 'RCC Wall Compound' ? '/products/rcc-wall-compound' : '#'}
                         className="block py-2 px-4 text-gray-600 hover:text-green-600 hover:bg-white rounded-lg transition-all duration-200"
                       >
                         {sub}
@@ -137,7 +137,7 @@ export default function ProductMenu() {
                     {menu.subcategories.map((sub, subIndex) => (
                       <Link
                         key={subIndex}
-                        href={sub === 'RCC Pipe 200mm Dia' ? '/products/rcc-pipe-200mm' : sub === '(Np2/Np3/Np4) RCC Pipe All size of Dia' ? '/products/rcc-pipe-all-sizes' : sub === 'RCC Spun Pipe' ? '/products/rcc-spun-pipe' : '#'}
+                        href={sub === 'RCC Pipe 200mm Dia' ? '/products/rcc-pipe-200mm' : sub === '(Np2/Np3/Np4) RCC Pipe All size of Dia' ? '/products/rcc-pipe-all-sizes' : sub === 'RCC Spun Pipe' ? '/products/rcc-spun-pipe' : sub === 'RCC Cement Pipe' ? '/products/rcc-cement-pipe' : sub === '300 MM Cement Pipe' ? '/products/300-mm-cement-pipe' : sub === 'RCC Half Round Pipe' ? '/products/rcc-half-round-pipe' : sub === 'Readymade RCC Septic Tank' ? '/products/readymade-rcc-septic-tank' : sub === '600 MM Dia RCC Septic Tank' ? '/products/600-mm-dia-rcc-septic-tank' : sub === '900 MM Dia RCC Septic Tank' ? '/products/900-mm-dia-rcc-septic-tank' : sub === '1200 MM Dia RCC Septic Tank' ? '/products/1200-mm-dia-rcc-septic-tank' : sub === '1800 MM Dia RCC Septic Tank' ? '/products/1800-mm-dia-rcc-septic-tank' : sub === 'RCC Wall Compound' ? '/products/rcc-wall-compound' : '#'}
                         className="block px-6 py-3 text-gray-600 hover:text-green-600 hover:bg-gray-50 transition-all duration-200"
                       >
                         {sub}

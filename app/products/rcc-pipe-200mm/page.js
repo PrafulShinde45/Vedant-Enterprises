@@ -1,12 +1,8 @@
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import { ArrowLeft, Eye } from 'lucide-react';
+import { Eye } from 'lucide-react';
 
 export default function RCCPipe200mm() {
-  const productData = [
-    { size: '200', class: 'NP2 / NP3 / NP4', thickness: '25 / 30 / 30', length: '2.0 mtr', collar: 'Spigot & Socket' }
-  ];
-
   const relatedProducts = [
     {
       name: 'RCC Pipe All Sizes',
@@ -68,39 +64,51 @@ export default function RCCPipe200mm() {
           </div>
         </section>
 
-        {/* Product Specifications Table */}
+        {/* Features and Pricing */}
         <section className="py-20 bg-white">
           <div className="max-w-6xl mx-auto px-6 md:px-16">
             <div className="text-center mb-12 animate-fade-in-up">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Product Specifications</h2>
+              <h2 className="text-3xl font-bold text-gray-800 mb-4">Features</h2>
               <p className="text-lg text-gray-600">
-                Detailed specifications for 200mm RCC pipe
+                Key features of our 200mm RCC pipes
               </p>
             </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full bg-white rounded-xl shadow-lg overflow-hidden">
-                <thead className="bg-gradient-to-r from-green-600 to-green-700 text-white">
-                  <tr>
-                    <th className="px-6 py-4 text-left font-semibold">SIZES (mm)</th>
-                    <th className="px-6 py-4 text-left font-semibold">CLASS</th>
-                    <th className="px-6 py-4 text-left font-semibold">THICKNESS (mm)</th>
-                    <th className="px-6 py-4 text-left font-semibold">LENGTH</th>
-                    <th className="px-6 py-4 text-left font-semibold">COLLAR TYPE</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {productData.map((row, index) => (
-                    <tr key={index} className={`border-b border-gray-200 hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                      <td className="px-6 py-4 font-semibold text-gray-800">{row.size}</td>
-                      <td className="px-6 py-4 text-gray-600">{row.class}</td>
-                      <td className="px-6 py-4 text-gray-600">{row.thickness}</td>
-                      <td className="px-6 py-4 text-gray-600">{row.length}</td>
-                      <td className="px-6 py-4 text-gray-600">{row.collar}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <div className="bg-gray-50 rounded-xl p-6">
+                <ul className="text-gray-600 space-y-3">
+                  <li className="flex items-start">
+                    <span className="text-green-600 mr-2">•</span>
+                    Easy maintenance
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 mr-2">•</span>
+                    High sturdy
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 mr-2">•</span>
+                    Reasonable price
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 mr-2">•</span>
+                    Easy to install
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 mr-2">•</span>
+                    Excellent strength
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-gray-50 rounded-xl p-6">
+                <h3 className="text-xl font-semibold text-gray-800 mb-4">Pricing</h3>
+                <div className="text-lg font-semibold text-green-600 mb-4">
+                  Approx. Price: Rs 210/ Meter <span className="text-sm text-gray-500">(Get Latest Price)</span>
+                </div>
+                <div className="bg-gradient-to-r from-green-100 to-blue-100 px-4 py-2 rounded-lg inline-block">
+                  <span className="font-semibold text-gray-700">CATEGORY: RCC PIPE</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>

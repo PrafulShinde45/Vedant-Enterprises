@@ -1,6 +1,8 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Search, Phone, MapPin, FileText, ChevronDown } from 'lucide-react';
 import { menuData } from './ProductMenu';
@@ -11,15 +13,15 @@ export default function Navbar() {
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [expandedCategories, setExpandedCategories] = useState({});
   const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
-  const [manuallyClosed, setManuallyClosed] = useState(false);
+  const [manuallyClosed, setManuallyClosed] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('manuallyClosed');
+      return saved ? JSON.parse(saved) : false;
+    }
+    return false;
+  });
 
   useEffect(() => {
-    // Only restore manually closed state, don't auto-open dropdown
-    const savedManuallyClosed = localStorage.getItem('manuallyClosed');
-    if (savedManuallyClosed !== null) {
-      setManuallyClosed(JSON.parse(savedManuallyClosed));
-    }
-
     // Handle dropdown state based on current page - only open if manually opened before
     const handleRouteChange = () => {
       if (typeof window !== 'undefined') {
@@ -39,7 +41,7 @@ export default function Navbar() {
     return () => {
       window.removeEventListener('popstate', handleRouteChange);
     };
-  }, []);
+  }, [manuallyClosed]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -67,7 +69,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 shadow-lg">
+    <header className="fixed top-0 left-0 right-0 z-50 shadow-lg">
       {/* Top Bar */}
       <div className="gradient-primary text-white py-3 px-4 md:px-8 animate-fade-in-up">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-sm">
@@ -98,15 +100,15 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex space-x-8">
-            <li><a href="/" className="hover:text-white transition-all duration-300 relative group">Home
+            <li><Link href="/" className="hover:text-white transition-all duration-300 relative group">Home
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-            </a></li>
+            </Link></li>
             <li className="relative">
-              <a href="/products" onClick={(e) => { e.preventDefault(); toggleProductsDropdown(); }} className="hover:text-white transition-all duration-300 relative group flex items-center cursor-pointer">
+              <Link href="/products" onClick={(e) => { e.preventDefault(); toggleProductsDropdown(); }} className="hover:text-white transition-all duration-300 relative group flex items-center cursor-pointer">
                 Products
                 <ChevronDown className="ml-1 w-4 h-4 transition-transform duration-300" />
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </Link>
               <div
                 className={`absolute top-full left-0 mt-2 bg-white rounded-lg shadow-lg z-50 border border-gray-200 transition-all duration-300 ${isProductsDropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
                 style={{
@@ -137,9 +139,9 @@ export default function Navbar() {
                     <div className="w-1/2">
                       <div className="py-2 px-4">
                         {menuData[Object.keys(expandedCategories)[0]].subcategories.map((sub, subIndex) => (
-                          <a
+                          <Link
                             key={subIndex}
-                            href={sub === '(Np2/Np3/Np4) RCC Pipe All size of Dia' ? '/products/rcc-pipe-all-sizes' : sub === 'RCC Pipe 200mm Dia' ? '/products/rcc-pipe-200mm' : sub === 'RCC Spun Pipe' ? '/products/rcc-spun-pipe' : '/products'}
+                            href={sub === '(Np2/Np3/Np4) RCC Pipe All size of Dia' ? '/products/rcc-pipe-all-sizes' : sub === 'RCC Pipe 200mm Dia' ? '/products/rcc-pipe-200mm' : sub === 'RCC Spun Pipe' ? '/products/rcc-spun-pipe' : sub === 'RCC Cement Pipe' ? '/products/rcc-cement-pipe' : sub === '300 MM Cement Pipe' ? '/products/300-mm-cement-pipe' : sub === 'RCC Half Round Pipe' ? '/products/rcc-half-round-pipe' : sub === 'RCC Manhole Cover in all size' ? '/products/rcc-manhole-cover-all-sizes' : sub === '1200 MM X 1200 MM Heavy Duty Plain Drain Cover' ? '/products/1200mm-x-1200mm-heavy-duty-plain-drain-cover' : sub === '1200 MM X 1200 MM Heavy Duty Perforated Drain Cover' ? '/products/1200mm-x-1200mm-heavy-duty-perforated-drain-cover' : sub === 'Concrete Chamber Cover' ? '/products/concrete-chamber-cover' : sub === 'RCC Chamber Cover' ? '/products/rcc-chamber-cover' : sub === 'RCC Circular Manhole Cover' ? '/products/rcc-circular-manhole-cover' : sub === 'Readymade RCC Septic Tank' ? '/products/readymade-rcc-septic-tank' : '/products'}
                             onClick={() => {
                               setIsProductsDropdownOpen(false);
                               localStorage.setItem('productsDropdownOpen', 'false');
@@ -147,7 +149,7 @@ export default function Navbar() {
                             className="block py-2 px-4 text-gray-600 hover:text-green-600 hover:bg-gray-50 rounded-lg transition-all duration-200"
                           >
                             {sub}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -155,15 +157,15 @@ export default function Navbar() {
                 </div>
               </div>
             </li>
-            <li><a href="/gallery" className="hover:text-white transition-all duration-300 relative group">Gallery
+            <li><Link href="/gallery" className="hover:text-white transition-all duration-300 relative group">Gallery
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-            </a></li>
-            <li><a href="/about" className="hover:text-white transition-all duration-300 relative group">About Us
+            </Link></li>
+            <li><Link href="/about" className="hover:text-white transition-all duration-300 relative group">About Us
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-            </a></li>
-            <li><a href="/contact" className="hover:text-white transition-all duration-300 relative group">Contact Us
+            </Link></li>
+            <li><Link href="/contact" className="hover:text-white transition-all duration-300 relative group">Contact Us
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-            </a></li>
+            </Link></li>
           </ul>
 
           {/* Search Icon */}
@@ -183,7 +185,7 @@ export default function Navbar() {
         {isOpen && (
           <div className="md:hidden gradient-primary border-t border-green-700 animate-slide-in-left">
             <ul className="px-4 py-4 space-y-4">
-              <li><a href="/" className="block hover:text-white transition-colors py-2">Home</a></li>
+              <li><Link href="/" className="block hover:text-white transition-colors py-2">Home</Link></li>
               <li>
                 <button onClick={toggleMobileProducts} className="flex items-center justify-between w-full hover:text-white transition-colors py-2">
                   <span>Products</span>
@@ -203,13 +205,13 @@ export default function Navbar() {
                         {expandedCategories[index] && (
                           <div className="bg-green-800 rounded-lg p-2 mt-1">
                             {category.subcategories.map((sub, subIndex) => (
-                              <a
+                              <Link
                                 key={subIndex}
-                                href={sub === '(Np2/Np3/Np4) RCC Pipe All size of Dia' ? '/products/rcc-pipe-all-sizes' : sub === 'RCC Pipe 200mm Dia' ? '/products/rcc-pipe-200mm' : sub === 'RCC Spun Pipe' ? '/products/rcc-spun-pipe' : '/products'}
+                                href={sub === '(Np2/Np3/Np4) RCC Pipe All size of Dia' ? '/products/rcc-pipe-all-sizes' : sub === 'RCC Pipe 200mm Dia' ? '/products/rcc-pipe-200mm' : sub === 'RCC Spun Pipe' ? '/products/rcc-spun-pipe' : sub === 'RCC Cement Pipe' ? '/products/rcc-cement-pipe' : sub === '300 MM Cement Pipe' ? '/products/300-mm-cement-pipe' : sub === 'RCC Half Round Pipe' ? '/products/rcc-half-round-pipe' : sub === 'RCC Manhole Cover in all size' ? '/products/rcc-manhole-cover-all-sizes' : sub === '1200 MM X 1200 MM Heavy Duty Plain Drain Cover' ? '/products/1200mm-x-1200mm-heavy-duty-plain-drain-cover' : sub === '1200 MM X 1200 MM Heavy Duty Perforated Drain Cover' ? '/products/1200mm-x-1200mm-heavy-duty-perforated-drain-cover' : sub === 'Concrete Chamber Cover' ? '/products/concrete-chamber-cover' : sub === 'RCC Chamber Cover' ? '/products/rcc-chamber-cover' : sub === 'RCC Circular Manhole Cover' ? '/products/rcc-circular-manhole-cover' : sub === 'Readymade RCC Septic Tank' ? '/products/readymade-rcc-septic-tank' : '/products'}
                                 className="block py-2 px-4 text-sm text-gray-300 hover:text-white transition-colors"
                               >
                                 {sub}
-                              </a>
+                              </Link>
                             ))}
                           </div>
                         )}
@@ -218,9 +220,9 @@ export default function Navbar() {
                   </div>
                 )}
               </li>
-              <li><a href="/gallery" className="block hover:text-white transition-colors py-2">Gallery</a></li>
-              <li><a href="/about" className="block hover:text-white transition-colors py-2">About Us</a></li>
-              <li><a href="/contact" className="block hover:text-white transition-colors py-2">Contact Us</a></li>
+              <li><Link href="/gallery" className="block hover:text-white transition-colors py-2">Gallery</Link></li>
+              <li><Link href="/about" className="block hover:text-white transition-colors py-2">About Us</Link></li>
+              <li><Link href="/contact" className="block hover:text-white transition-colors py-2">Contact Us</Link></li>
             </ul>
           </div>
         )}
