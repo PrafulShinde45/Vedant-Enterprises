@@ -1,15 +1,12 @@
-
-
-
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { MapPin, Mail, Phone, FileText, Send, CheckCircle, Clock, Users, Award, Star, ArrowRight } from 'lucide-react';
 
-export default function Contact() {
+function ContactForm() {
   const searchParams = useSearchParams();
   const product = searchParams.get('product');
 
@@ -38,45 +35,6 @@ export default function Contact() {
       setFormData({ name: '', email: '', mobile: '', message: product ? `I am interested in getting a quote for ${product}. Please provide more details.` : '' });
     }, 3000);
   };
-
-  const features = [
-    {
-      icon: Clock,
-      title: '24/7 Support',
-      description: 'Round-the-clock assistance for your construction needs.'
-    },
-    {
-      icon: Users,
-      title: 'Expert Team',
-      description: 'Experienced professionals ready to guide your projects.'
-    },
-    {
-      icon: Award,
-      title: 'Quality Guaranteed',
-      description: 'ISO 9001 certified with uncompromising quality standards.'
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: 'Rajesh Kumar',
-      role: 'Construction Contractor',
-      message: 'Vedant Enterprises provided exceptional RCC pipes for our project. Their quality and timely delivery exceeded our expectations.',
-      rating: 5
-    },
-    {
-      name: 'Priya Sharma',
-      role: 'Project Manager',
-      message: 'Outstanding service and premium materials. The team was incredibly helpful throughout our collaboration.',
-      rating: 5
-    },
-    {
-      name: 'Amit Patel',
-      role: 'Builder',
-      message: 'Reliable partner for all construction materials. Their septic tanks and compound walls are top-notch.',
-      rating: 5
-    }
-  ];
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -304,5 +262,13 @@ export default function Contact() {
 
       <Footer />
     </div>
+  );
+}
+
+export default function Contact() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ContactForm />
+    </Suspense>
   );
 }
