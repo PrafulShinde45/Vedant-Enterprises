@@ -1,15 +1,9 @@
+
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import { Eye } from 'lucide-react';
 
 export default function ReadymadeRCCSepticTank() {
-  const pricingData = [
-    { size: '600 MM Dia', price: 'Contact for Pricing' },
-    { size: '900 MM Dia', price: 'Contact for Pricing' },
-    { size: '1200 MM Dia', price: 'Contact for Pricing' },
-    { size: '1800 MM Dia', price: 'Contact for Pricing' }
-  ];
-
   const relatedProducts = [
     {
       name: 'RCC Pipe All Sizes',
@@ -21,16 +15,7 @@ export default function ReadymadeRCCSepticTank() {
       image: '/assets/rcc-cement-pipe.webp',
       link: '/products/rcc-cement-pipe'
     },
-    {
-      name: 'RCC Manhole Cover in all size',
-      image: '/assets/rcc-manhole-cover.webp',
-      link: '/products/rcc-manhole-cover-all-sizes'
-    },
-    {
-      name: 'RCC Chamber Cover',
-      image: '/assets/rcc-chamber-cover.webp',
-      link: '/products/rcc-chamber-cover'
-    }
+    
   ];
 
   return (
@@ -39,14 +24,14 @@ export default function ReadymadeRCCSepticTank() {
 
       <main className="flex-1 bg-gray-50">
         {/* Product Details Section */}
-        <section className="py-20">
+        <section className="pt-48 pb-20">
           <div className="max-w-7xl mx-auto px-6 md:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               {/* Image */}
               <div className="animate-slide-in-left">
                 <div className="rounded-3xl overflow-hidden shadow-2xl hover-lift">
                   <img
-                    src="/assets/readymade-rcc-septic-tank.webp"
+                    src="/assets/st1-150x150.webp"
                     alt="Readymade RCC Septic Tank"
                     className="w-full h-full object-cover"
                   />
@@ -150,27 +135,7 @@ export default function ReadymadeRCCSepticTank() {
               </div>
             </div>
 
-            <div className="bg-gray-50 rounded-xl p-6 mb-12">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Available Sizes and Prices</h3>
-              <div className="overflow-x-auto">
-                <table className="w-full bg-white rounded-lg shadow-sm">
-                  <thead className="bg-gradient-to-r from-green-600 to-green-700 text-white">
-                    <tr>
-                      <th className="px-4 py-3 text-left font-semibold">Sizes</th>
-                      <th className="px-4 py-3 text-left font-semibold">Prices</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {pricingData.map((row, index) => (
-                      <tr key={index} className={`border-b border-gray-200 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                        <td className="px-4 py-3 font-semibold text-gray-800">{row.size}</td>
-                        <td className="px-4 py-3 text-gray-600">{row.price}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+
           </div>
         </section>
 
@@ -194,15 +159,7 @@ export default function ReadymadeRCCSepticTank() {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <h3 className="text-xl font-bold mb-2">{product.name}</h3>
-                      <div className="flex items-center mt-3 text-sm">
-                        <Eye className="w-4 h-4 mr-1" />
-                        <span>Click to view details</span>
-                      </div>
-                    </div>
-                  </div>
+                  
                   <div className="absolute top-4 right-4 bg-white bg-opacity-90 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <Eye className="w-5 h-5 text-gray-800" />
                   </div>

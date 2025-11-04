@@ -1,5 +1,3 @@
-
-
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import { Eye } from 'lucide-react';
@@ -19,16 +17,6 @@ export default function RCCSepticTank600mm() {
       name: 'RCC Cement Pipe',
       image: '/assets/rcc-cement-pipe.webp',
       link: '/products/rcc-cement-pipe'
-    },
-    {
-      name: 'RCC Manhole Cover in all size',
-      image: '/assets/rcc-manhole-cover.webp',
-      link: '/products/rcc-manhole-cover-all-sizes'
-    },
-    {
-      name: 'RCC Chamber Cover',
-      image: '/assets/rcc-chamber-cover.webp',
-      link: '/products/rcc-chamber-cover'
     }
   ];
 
@@ -38,14 +26,14 @@ export default function RCCSepticTank600mm() {
 
       <main className="flex-1 bg-gray-50">
         {/* Product Details Section */}
-        <section className="py-20">
+        <section className="pt-48 pb-20">
           <div className="max-w-7xl mx-auto px-6 md:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               {/* Image */}
               <div className="animate-slide-in-left">
                 <div className="rounded-3xl overflow-hidden shadow-2xl hover-lift">
                   <img
-                    src="/assets/st2-300x400.webp"
+                    src="/assets/st1-150x150.webp"
                     alt="600 MM Dia RCC Septic Tank"
                     className="w-full h-full object-cover"
                   />
@@ -59,7 +47,7 @@ export default function RCCSepticTank600mm() {
                     600 MM Dia RCC Septic Tank
                   </h2>
                   <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                    Compact 600mm diameter RCC septic tank ideal for small residential applications. Features superior durability and leak-proof construction for efficient wastewater treatment.
+                    Compact 600mm diameter RCC septic tank ideal for small residential applications. Provides efficient wastewater treatment with durable RCC construction.
                   </p>
                   <div className="text-lg font-semibold text-green-600 mb-6">
                     Approx. Price: Contact for Latest Price
@@ -143,7 +131,7 @@ export default function RCCSepticTank600mm() {
                   </li>
                   <li className="flex items-start">
                     <span className="text-green-600 mr-2">•</span>
-                    Easy installation
+                    Suitable for small residential use
                   </li>
                   <li className="flex items-start">
                     <span className="text-green-600 mr-2">•</span>

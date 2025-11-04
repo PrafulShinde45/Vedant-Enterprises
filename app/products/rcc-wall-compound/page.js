@@ -1,12 +1,10 @@
+
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import { Eye } from 'lucide-react';
 
 export default function RCCWallCompound() {
-  const pricingData = [
-    { size: 'Standard Size', price: 'Contact for Pricing' },
-    { size: 'Custom Size', price: 'Contact for Pricing' }
-  ];
+
 
   const relatedProducts = [
     {
@@ -18,16 +16,6 @@ export default function RCCWallCompound() {
       name: 'RCC Cement Pipe',
       image: '/assets/rcc-cement-pipe.webp',
       link: '/products/rcc-cement-pipe'
-    },
-    {
-      name: 'RCC Manhole Cover in all size',
-      image: '/assets/rcc-manhole-cover.webp',
-      link: '/products/rcc-manhole-cover-all-sizes'
-    },
-    {
-      name: 'RCC Chamber Cover',
-      image: '/assets/rcc-chamber-cover.webp',
-      link: '/products/rcc-chamber-cover'
     }
   ];
 
@@ -37,7 +25,7 @@ export default function RCCWallCompound() {
 
       <main className="flex-1 bg-gray-50">
         {/* Product Details Section */}
-        <section className="py-20">
+        <section className="pt-48 pb-20">
           <div className="max-w-7xl mx-auto px-6 md:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               {/* Image */}
@@ -82,7 +70,7 @@ export default function RCCWallCompound() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-gray-50 rounded-xl p-6">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4">Specifications</h3>
                 <div className="space-y-3">
@@ -126,32 +114,6 @@ export default function RCCWallCompound() {
               </div>
 
               <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">Product Images</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <img
-                    src="/assets/cc1-150x150.webp"
-                    alt="RCC Wall Compound - Side View"
-                    className="w-full h-32 object-cover rounded-lg"
-                  />
-                  <img
-                    src="/assets/cc2-150x150.webp"
-                    alt="RCC Wall Compound - Top View"
-                    className="w-full h-32 object-cover rounded-lg"
-                  />
-                  <img
-                    src="/assets/cc3-150x150.webp"
-                    alt="RCC Wall Compound - Installation"
-                    className="w-full h-32 object-cover rounded-lg"
-                  />
-                  <img
-                    src="/assets/Vedant-enterprises-9001_page-0001-1087x1536.webp"
-                    alt="RCC Wall Compound - Detail"
-                    className="w-full h-32 object-cover rounded-lg"
-                  />
-                </div>
-              </div>
-
-              <div className="bg-gray-50 rounded-xl p-6">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4">Features</h3>
                 <ul className="text-gray-600 space-y-3">
                   <li className="flex items-start">
@@ -175,28 +137,6 @@ export default function RCCWallCompound() {
                     Easy installation
                   </li>
                 </ul>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-xl p-6 mb-12">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Available Sizes and Prices</h3>
-              <div className="overflow-x-auto">
-                <table className="w-full bg-white rounded-lg shadow-sm">
-                  <thead className="bg-gradient-to-r from-green-600 to-green-700 text-white">
-                    <tr>
-                      <th className="px-4 py-3 text-left font-semibold">Sizes</th>
-                      <th className="px-4 py-3 text-left font-semibold">Prices</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {pricingData.map((row, index) => (
-                      <tr key={index} className={`border-b border-gray-200 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                        <td className="px-4 py-3 font-semibold text-gray-800">{row.size}</td>
-                        <td className="px-4 py-3 text-gray-600">{row.price}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
               </div>
             </div>
           </div>

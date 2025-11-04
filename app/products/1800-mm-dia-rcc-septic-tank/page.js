@@ -17,16 +17,6 @@ export default function RCCSepticTank1800mm() {
       name: 'RCC Cement Pipe',
       image: '/assets/rcc-cement-pipe.webp',
       link: '/products/rcc-cement-pipe'
-    },
-    {
-      name: 'RCC Manhole Cover in all size',
-      image: '/assets/rcc-manhole-cover.webp',
-      link: '/products/rcc-manhole-cover-all-sizes'
-    },
-    {
-      name: 'RCC Chamber Cover',
-      image: '/assets/rcc-chamber-cover.webp',
-      link: '/products/rcc-chamber-cover'
     }
   ];
 
@@ -36,7 +26,7 @@ export default function RCCSepticTank1800mm() {
 
       <main className="flex-1 bg-gray-50">
         {/* Product Details Section */}
-        <section className="py-20">
+        <section className="pt-48 pb-20">
           <div className="max-w-7xl mx-auto px-6 md:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               {/* Image */}

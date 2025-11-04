@@ -32,7 +32,7 @@ export default function RCCHalfRoundPipe() {
 
       <main className="flex-1 bg-gray-50">
         {/* Product Details Section */}
-        <section className="py-20">
+        <section className="pt-48 pb-20">
           <div className="max-w-7xl mx-auto px-6 md:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               {/* Image */}

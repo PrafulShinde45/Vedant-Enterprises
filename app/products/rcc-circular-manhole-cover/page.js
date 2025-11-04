@@ -1,32 +1,24 @@
+
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import { Eye } from 'lucide-react';
 
 export default function RCCCircularManholeCover() {
-  const pricingData = [
-    { size: 'Various Sizes', price: 'Contact for Pricing' }
-  ];
-
   const relatedProducts = [
     {
-      name: 'Concrete Chamber Cover',
-      image: '/assets/concrete-chamber-cover.webp',
-      link: '/products/concrete-chamber-cover'
+      name: 'RCC Chamber Cover CC1',
+      image: '/assets/cc1-150x150.webp',
+      link: '#'
     },
     {
-      name: 'RCC Chamber Cover',
-      image: '/assets/rcc-chamber-cover.webp',
-      link: '/products/rcc-chamber-cover'
+      name: 'RCC Chamber Cover CC2',
+      image: '/assets/cc2-150x150.webp',
+      link: '#'
     },
     {
-      name: 'RCC Manhole Cover in all size',
-      image: '/assets/rcc-manhole-cover.webp',
-      link: '/products/rcc-manhole-cover-all-sizes'
-    },
-    {
-      name: 'RCC Pipe All Sizes',
-      image: '/assets/150mm-dia-rcc-pipe.webp',
-      link: '/products/rcc-pipe-all-sizes'
+      name: 'RCC Chamber Cover CC3',
+      image: '/assets/cc3-150x150.webp',
+      link: '#'
     }
   ];
 
@@ -36,15 +28,15 @@ export default function RCCCircularManholeCover() {
 
       <main className="flex-1 bg-gray-50">
         {/* Product Details Section */}
-        <section className="py-20">
+        <section className="pt-48 pb-20">
           <div className="max-w-7xl mx-auto px-6 md:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               {/* Image */}
               <div className="animate-slide-in-left">
                 <div className="rounded-3xl overflow-hidden shadow-2xl hover-lift">
                   <img
-                    src="/assets/rcc-circular-manhole-cover.webp"
-                    alt="RCC Circular Manhole Cover"
+                    src="/assets/cc3-150x150.webp"
+                    alt="RCC Chamber Cover CC3"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -56,15 +48,17 @@ export default function RCCCircularManholeCover() {
                   <h2 className="text-4xl font-bold text-gray-800 mb-6">
                     RCC Circular Manhole Cover
                   </h2>
+                  <img src="/assets/cc3-150x150.webp" alt="CC3" className="w-20 h-20 rounded-lg mb-4 float-right" />
                   <p className="text-lg text-gray-600 leading-relaxed mb-6">
                     Circular RCC manhole covers designed for round manholes and inspection chambers. Provides secure access with circular design for optimal fit and functionality.
                   </p>
                   <div className="text-lg font-semibold text-green-600 mb-6">
                     Approx. Price: Contact for Latest Price
                   </div>
-                  <div className="bg-gradient-to-r from-green-100 to-blue-100 px-4 py-2 rounded-lg inline-block">
+                  <div className="bg-gradient-to-r from-green-100 to-blue-100 px-4 py-2 rounded-lg inline-block mb-6">
                     <span className="font-semibold text-gray-700">CATEGORY: CHAMBER COVER</span>
                   </div>
+
                 </div>
               </div>
             </div>
@@ -147,27 +141,7 @@ export default function RCCCircularManholeCover() {
               </div>
             </div>
 
-            <div className="bg-gray-50 rounded-xl p-6 mb-12">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Available Sizes and Prices</h3>
-              <div className="overflow-x-auto">
-                <table className="w-full bg-white rounded-lg shadow-sm">
-                  <thead className="bg-gradient-to-r from-green-600 to-green-700 text-white">
-                    <tr>
-                      <th className="px-4 py-3 text-left font-semibold">Sizes</th>
-                      <th className="px-4 py-3 text-left font-semibold">Prices</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {pricingData.map((row, index) => (
-                      <tr key={index} className={`border-b border-gray-200 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                        <td className="px-4 py-3 font-semibold text-gray-800">{row.size}</td>
-                        <td className="px-4 py-3 text-gray-600">{row.price}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+
           </div>
         </section>
 
