@@ -16,6 +16,7 @@ function ContactForm() {
     name: '',
     email: '',
     mobile: '',
+    subject: product || '',
     message: product ? `I am interested in getting a quote for ${product}. Please provide more details.` : ''
   });
 
@@ -34,7 +35,7 @@ function ContactForm() {
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
-      setFormData({ name: '', email: '', mobile: '', message: product ? `I am interested in getting a quote for ${product}. Please provide more details.` : '' });
+      setFormData({ name: '', email: '', mobile: '', subject: product || '', message: product ? `I am interested in getting a quote for ${product}. Please provide more details.` : '' });
     }, 3000);
   };
 
@@ -53,12 +54,12 @@ function ContactForm() {
           <div className="absolute bottom-20 right-20 w-20 h-20 bg-blue-400 rounded-full blur-2xl animate-float opacity-30" style={{ animationDelay: '2s' }}></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-purple-400 rounded-full blur-3xl animate-float opacity-20" style={{ animationDelay: '4s' }}></div>
         </div>
-        <div className="relative max-w-6xl mx-auto px-6 md:px-16 text-center">
+        <div className="relative max-w-6xl mx-auto px-6 md:px-16 pt-12 md:pt-16 text-center">
           <div className="animate-fade-in-up">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-green-200 to-white bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-green-200 to-white bg-clip-text text-transparent leading-tight">
               Let's Build Together
             </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed opacity-90">
+            <p className="text-lg sm:text-xl md:text-2xl mb-8 max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto leading-relaxed opacity-90">
               Connect with Vedant Enterprises for premium construction materials, expert guidance, and unparalleled service that brings your vision to life.
             </p>
             <div className="flex justify-center space-x-6 mb-8">
@@ -70,6 +71,11 @@ function ContactForm() {
                 <Mail className="w-5 h-5" />
                 <span className="font-semibold">info@vedantenterprises.com</span>
               </div>
+            </div>
+            <div className="flex justify-center">
+              <a href="/products" className="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white hover:bg-white/20 transition-all duration-300">
+                View Products
+              </a>
             </div>
           </div>
         </div>
@@ -93,7 +99,7 @@ function ContactForm() {
                       </div>
                       <div>
                         <h3 className="text-xl font-semibold text-gray-800 mb-2">Physical Address</h3>
-                        <p className="text-gray-600 text-lg leading-relaxed">Haveli Pune - 412201, Maharashtra, India</p>
+                        <p className="text-gray-600 text-lg leading-relaxed">A/p Naigaon Tal Haveli Dist Pune Near Naigaon Kaman, Pune- 412110, Maharashtra, India</p>
                       </div>
                     </div>
 
@@ -137,9 +143,9 @@ function ContactForm() {
                     <h3 className="text-2xl font-bold">Our Exact Location</h3>
                     <p className="text-green-100">Find us in Haveli, Pune - Red marker indicates our office</p>
                   </div>
-                  <div className="relative">
+                  <div className="relative pb-4">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.1234567890123!2d73.8567!3d18.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2b1b1b1b1b%3A0x4b4b4b4b4b4b4b4b!2sVedant%20Enterprises%20Haveli%20Pune!5e0!3m2!1sen!2sin!4v1690000000000!5m2!1sen!2sin&q=Vedant+Enterprises+Haveli+Pune+Maharashtra+India&markers=color:red%7CVedant+Enterprises+Haveli+Pune+Maharashtra+India"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.0!2d74.067389!3d18.488833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDI5JzE5LjgiTiA3NMKwMDQnMDIuNiJF!5e0!3m2!1sen!2sin!4v1720000000000!5m2!1sen!2sin&q=18.488833,74.067389&markers=color:red%7Clabel:V%7C18.488833,74.067389"
                       width="100%"
                       height="400"
                       style={{ border: 0 }}
@@ -151,6 +157,17 @@ function ContactForm() {
                     <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
                       Our Location
                     </div>
+                  </div>
+                  <div className="text-center">
+                    <a
+                      href="https://www.google.com/maps/dir/?api=1&destination=18.488833,74.067389"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center bg-gradient-to-r from-green-600 to-green-700 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:from-green-700 hover:to-green-800 transition-all duration-300"
+                    >
+                      <MapPin className="w-3 h-3 mr-1" />
+                      Get Directions
+                    </a>
                   </div>
                 </div>
               </div>
@@ -223,6 +240,21 @@ function ContactForm() {
                       required
                       className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 text-lg placeholder-black/50"
                       placeholder="Your mobile number"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="subject" className="block text-lg font-semibold text-gray-700 mb-3">Subject</label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 text-lg placeholder-black/50"
+                      placeholder="Subject of your message"
+                      style={{ color: product ? 'black' : 'inherit' }}
                     />
                   </div>
 

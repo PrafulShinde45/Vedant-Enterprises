@@ -48,18 +48,18 @@ export default function About() {
           <TrendingUp className="floating-element w-6 h-6 text-blue-300 opacity-30 top-32 right-20" />
           <Heart className="floating-element w-10 h-10 text-purple-300 opacity-25 bottom-20 left-20" />
         </div>
-        <div className="relative max-w-6xl mx-auto px-6 md:px-16 text-center">
+        <div className="relative max-w-6xl mx-auto px-6 md:px-16 pt-12 md:pt-16 text-center">
           <div className="animate-fade-in-up">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-green-200 to-white bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-green-200 to-white bg-clip-text text-transparent leading-tight">
               About Vedant Enterprises
             </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed opacity-90">
+            <p className="text-lg sm:text-xl md:text-2xl mb-8 max-w-full sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed opacity-90">
               Building trust through quality, innovation, and sustainable construction solutions for over a decade.
             </p>
-            <div className="flex justify-center space-x-4">
-              <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-              <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-              <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+            <div className="flex justify-center">
+              <a href="/contact" className="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white hover:bg-white/20 transition-all duration-300">
+                Get In Touch
+              </a>
             </div>
           </div>
         </div>
@@ -230,94 +230,6 @@ export default function About() {
           </div>
         </section>
 
-        {/* Our Story */}
-        <section className="py-20 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden">
-          {/* Background Elements */}
-          <div className="absolute inset-0 opacity-3">
-            <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-green-400 to-blue-500 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full blur-3xl"></div>
-          </div>
-          <div className="relative max-w-6xl mx-auto px-6 md:px-16">
-            <div className="text-center mb-16 animate-fade-in-up">
-              <h2 className="text-4xl font-bold text-gray-800 mb-4 bg-gradient-to-r from-gray-800 via-green-600 to-gray-800 bg-clip-text text-transparent">
-                Our Inspiring Journey
-              </h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                From humble beginnings to industry leadership - a story of passion, perseverance, and innovation.
-              </p>
-            </div>
-
-            {/* Journey Path */}
-            <div className="relative mb-16">
-              {/* Path Line */}
-              <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 transform -translate-y-1/2 rounded-full"></div>
-
-              {/* Milestone Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-                {[
-                  { year: '2010', event: 'Founded', desc: 'Vision born in Pune' },
-                  { year: '2015', event: 'Certified', desc: 'ISO 9001 achieved' },
-                  { year: '2020', event: 'Eco-Leader', desc: 'Green products launched' },
-                  { year: '2023', event: 'Milestone', desc: '500+ happy customers' }
-                ].map((milestone, index) => (
-                  <div key={index} className="text-center animate-fade-in-up group" style={{ animationDelay: `${index * 0.2}s` }}>
-                    <div className="relative mb-4">
-                      <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-700 rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300 animate-pulse-glow">
-                        <Calendar className="w-10 h-10 text-white" />
-                      </div>
-                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                        {index + 1}
-                      </div>
-                    </div>
-                    <div className="bg-white rounded-xl shadow-lg p-6 hover-lift group-hover:shadow-2xl transition-shadow duration-300">
-                      <h4 className="text-2xl font-bold text-gray-800 mb-2">{milestone.year}</h4>
-                      <h5 className="text-lg font-semibold text-green-600 mb-3">{milestone.event}</h5>
-                      <p className="text-gray-600 text-sm leading-relaxed">{milestone.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Story Essence */}
-            <div className="bg-gradient-to-r from-green-50 via-white to-blue-50 rounded-2xl p-8 md:p-12 shadow-xl animate-fade-in-up">
-              <div className="text-center max-w-4xl mx-auto">
-                <div className="flex items-center justify-center mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-700 rounded-full flex items-center justify-center mr-4">
-                    <MapPin className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-3xl font-bold text-gray-800">Our Essence</h3>
-                </div>
-                <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto">
-                  Born in Pune, Maharashtra, Vedant Enterprises transformed a simple belief into an industry beacon. From family roots to innovation leaders, we've built not just products, but lasting partnerships. Our promise: uncompromising quality, relentless innovation, and customer-first service.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="text-center group cursor-pointer">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-green-200 transition-colors">
-                      <Sparkles className="w-6 h-6 text-green-600" />
-                    </div>
-                    <h4 className="font-semibold text-gray-800 mb-2">Quality First</h4>
-                    <p className="text-sm text-gray-600">Every product meets the highest standards</p>
-                  </div>
-                  <div className="text-center group cursor-pointer">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-200 transition-colors">
-                      <TrendingUp className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <h4 className="font-semibold text-gray-800 mb-2">Innovation Driven</h4>
-                    <p className="text-sm text-gray-600">Constantly evolving with new technologies</p>
-                  </div>
-                  <div className="text-center group cursor-pointer">
-                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-purple-200 transition-colors">
-                      <Heart className="w-6 h-6 text-purple-600" />
-                    </div>
-                    <h4 className="font-semibold text-gray-800 mb-2">Customer Centric</h4>
-                    <p className="text-sm text-gray-600">Your success is our ultimate goal</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
 
       </main>

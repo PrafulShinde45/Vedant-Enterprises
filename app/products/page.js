@@ -12,19 +12,29 @@ export default function Products() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative text-white py-20 md:py-32 bg-cover bg-center">
+      <section className="relative text-white py-20 md:py-32 bg-cover bg-center overflow-hidden">
         {/* Background Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-green-900/50 via-transparent to-green-800/50"></div>
         <div className="absolute inset-0 bg-[url('/assets/bg-pic.webp')] bg-cover bg-center opacity-20"></div>
-
-        <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-16 text-center">
+        {/* Floating Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 left-10 w-16 h-16 bg-green-400 rounded-full blur-2xl animate-float opacity-30"></div>
+          <div className="absolute bottom-20 right-20 w-20 h-20 bg-blue-400 rounded-full blur-2xl animate-float opacity-30" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-purple-400 rounded-full blur-3xl animate-float opacity-20" style={{ animationDelay: '4s' }}></div>
+        </div>
+        <div className="relative max-w-6xl mx-auto px-6 md:px-16 pt-12 md:pt-16 text-center">
           <div className="animate-fade-in-up">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-green-200 to-white bg-clip-text text-transparent leading-tight">
               Our Products
             </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl mb-8 max-w-full sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed">
               Discover our comprehensive range of premium construction materials, designed for durability, reliability, and sustainability in every project.
             </p>
+            <div className="flex justify-center">
+              <a href="/gallery" className="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white hover:bg-white/20 transition-all duration-300">
+                View Gallery
+              </a>
+            </div>
           </div>
         </div>
       </section>
