@@ -20,7 +20,7 @@ export default function RCCManholeCoverAllSizes() {
     { particulars: '36" x 48"', class: 'HD', brand: 'VEDANT', weight: '900.KG', loadCapacity: '16 MT' },
     { particulars: '48" x 48"', class: 'HD', brand: 'VEDANT', weight: '180 KG', loadCapacity: '16 MT' },
     { particulars: '21" ROUND', class: 'HD', brand: 'VEDANT', weight: '210 KG', loadCapacity: '16 MT' },
-    { particulars: '24" ROUND ISI', class: 'HD', brand: 'VEDANT', weight: '', loadCapacity: '' },
+    { particulars: '24" ROUND ISI', class: 'HD', brand: 'VEDANT', weight: '420 KG', loadCapacity: '16 MT' },
   ];
 
   const relatedProducts = [
@@ -242,7 +242,7 @@ export default function RCCManholeCoverAllSizes() {
                 Get Quote
               </Link>
               <a
-                href="tel:+918048619027"
+                href="tel:+919881346886"
                 className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300"
               >
                 Call Now

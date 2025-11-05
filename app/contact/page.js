@@ -31,7 +31,15 @@ function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission (e.g., send to API or email)
+    // Send message to WhatsApp business number
+    const targetNumber = '919860094150'; // +91 98600 94150
+    const text = `New enquiry from website:%0A%0AName: ${encodeURIComponent(formData.name)}%0AEmail: ${encodeURIComponent(formData.email)}%0AMobile: ${encodeURIComponent(formData.mobile)}%0ASubject: ${encodeURIComponent(formData.subject)}%0A%0AMessage:%0A${encodeURIComponent(formData.message)}`;
+    const waUrl = `https://wa.me/${targetNumber}?text=${text}`;
+    try {
+      window.open(waUrl, '_blank');
+    } catch (err) {
+      // no-op
+    }
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
@@ -65,7 +73,7 @@ function ContactForm() {
             <div className="flex flex-col sm:flex-row justify-center sm:space-x-6 space-y-4 sm:space-y-0 mb-8">
               <div className="flex items-center justify-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
                 <Phone className="w-5 h-5" />
-                <a href="tel:+918048619027" className="font-semibold hover:underline">+91 8048619027</a>
+                <a href="tel:+919881346886" className="font-semibold hover:underline">+91 98813 46886</a>
               </div>
               <div className="flex items-center justify-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
                 <Mail className="w-5 h-5" />
@@ -119,7 +127,7 @@ function ContactForm() {
                       </div>
                       <div>
                         <h3 className="text-xl font-semibold text-gray-800 mb-2">Phone</h3>
-                        <p className="text-gray-600 text-lg">+91 8048619027</p>
+                        <p className="text-gray-600 text-lg">+91 98813 46886</p>
                       </div>
                     </div>
 
@@ -209,7 +217,7 @@ function ContactForm() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 text-lg placeholder-black/50"
+                        className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 text-lg text-black placeholder-gray-400"
                         placeholder="Your full name"
                       />
                     </div>
@@ -223,7 +231,7 @@ function ContactForm() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 text-lg placeholder-black/50"
+                        className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 text-lg text-black placeholder-gray-400"
                         placeholder="your.email@example.com"
                       />
                     </div>
@@ -238,7 +246,7 @@ function ContactForm() {
                       value={formData.mobile}
                       onChange={handleChange}
                       required
-                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 text-lg placeholder-black/50"
+                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 text-lg text-black placeholder-gray-400"
                       placeholder="Your mobile number"
                     />
                   </div>
@@ -252,9 +260,8 @@ function ContactForm() {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 text-lg placeholder-black/50"
+                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 text-lg text-black placeholder-gray-400"
                       placeholder="Subject of your message"
-                      style={{ color: product ? 'black' : 'inherit' }}
                     />
                   </div>
 
@@ -267,9 +274,8 @@ function ContactForm() {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 resize-none text-lg placeholder-black/50"
+                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 resize-none text-lg text-black placeholder-gray-400"
                       placeholder="Tell us about your project, requirements, or any questions you have..."
-                      style={{ color: product ? 'black' : 'inherit' }}
                     ></textarea>
                   </div>
 

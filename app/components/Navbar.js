@@ -176,12 +176,13 @@ export default function Navbar() {
             </div>
             <div className="md:hidden flex items-center space-x-2">
               <Phone className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-              <span>+91 8048619027</span>
+        
             </div>
           </div>
           <div className="hidden md:flex items-center space-x-2">
             <Phone className="w-4 h-4" />
-            <span>+91 8048619027</span>
+            <span>+91 98813 46886</span>
+           
           </div>
         </div>
       </div>

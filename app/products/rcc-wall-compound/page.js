@@ -192,7 +192,7 @@ export default function RCCWallCompound() {
                 Get Quote
               </a>
               <a
-                href="tel:+918048619027"
+                href="tel:+919881346886"
                 className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300"
               >
                 Call Now

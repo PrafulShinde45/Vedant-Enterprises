@@ -203,7 +203,7 @@ export default function Home() {
         {/* CTA Buttons with Enhanced Effects */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in-up delay-400">
           <a
-            href="#products"
+            href="/products"
             className="group bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 px-4 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 md:py-4 lg:py-5 rounded-xl font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 hover:scale-105 inline-flex items-center justify-center btn-ripple btn-shine shadow-2xl hover:shadow-green-500/50 min-h-[44px]"
             style={{
               transform: `translate(${mousePosition.x * -3}px, ${mousePosition.y * -3}px)`
@@ -355,7 +355,7 @@ export default function Home() {
             </div>
 
             <div className="text-center mt-8 sm:mt-12">
-              <a href="/gallery" className="inline-flex items-center bg-gray-800 text-white px-6 sm:px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors text-sm sm:text-base">
+              <a href="/products" className="inline-flex items-center bg-gray-800 text-white px-6 sm:px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors text-sm sm:text-base">
                 View All Products
                 <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
               </a>
@@ -417,7 +417,7 @@ export default function Home() {
                 <a href="/contact" className="bg-gradient-to-r from-green-500 to-green-700 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-green-800 transition-colors text-sm sm:text-base">
                   Get In Touch
                 </a>
-                <a href="tel:+918048619027" className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-6 sm:px-8 py-3 rounded-lg font-semibold transition-all duration-300 text-sm sm:text-base">
+                <a href="tel:+919881346886" className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-6 sm:px-8 py-3 rounded-lg font-semibold transition-all duration-300 text-sm sm:text-base">
                   Call Now
                 </a>
               </div>
