@@ -1,6 +1,6 @@
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import { Eye } from 'lucide-react';
+import { Eye, Home, ChevronRight } from 'lucide-react';
 
 export default function RCCHalfRoundPipe() {
   const relatedProducts = [
@@ -31,8 +31,27 @@ export default function RCCHalfRoundPipe() {
       <Navbar />
 
       <main className="flex-1 bg-gray-50">
+        {/* Breadcrumb Navigation */}
+        <section className="pt-32 pb-6 bg-white border-b border-gray-200">
+          <div className="max-w-7xl mx-auto px-6 md:px-16">
+            <nav className="flex items-center space-x-2 text-sm text-gray-600">
+              <a href="/" className="flex items-center hover:text-green-600 transition-colors">
+                <Home className="w-4 h-4" />
+              </a>
+              <ChevronRight className="w-4 h-4" />
+              <a href="/products" className="hover:text-green-600 transition-colors">
+                Products
+              </a>
+              <ChevronRight className="w-4 h-4" />
+              <span className="text-gray-400">Cement Pipe</span>
+              <ChevronRight className="w-4 h-4" />
+              <span className="text-green-600 font-semibold">RCC Half Round Pipe</span>
+            </nav>
+          </div>
+        </section>
+
         {/* Product Details Section */}
-        <section className="pt-48 pb-20">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 md:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               {/* Image */}

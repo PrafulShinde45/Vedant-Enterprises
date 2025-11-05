@@ -3,11 +3,16 @@
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import { ArrowRight, Star, Users, Award, Truck } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { ArrowRight, Star, Users, Award, Truck, CheckCircle, Shield, Zap, ChevronDown } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [typedText, setTypedText] = useState('');
+  const [particles, setParticles] = useState([]);
+  const [isMounted, setIsMounted] = useState(false);
+  const heroRef = useRef(null);
 
   const slides = [
     '/assets/150mm-dia-rcc-pipe-300x400.webp',
@@ -15,13 +20,59 @@ export default function Home() {
     '/assets/bg-pic.webp'
   ];
 
+  const fullText = "Infrastructure Today";
+
+  // Generate particles only on client side after mount
+  useEffect(() => {
+    setIsMounted(true);
+    const generatedParticles = [...Array(15)].map((_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      animationDelay: Math.random() * 5,
+      animationClass: i % 2 === 0 ? 'animate-particle-float' : 'animate-particle-float-2'
+    }));
+    setParticles(generatedParticles);
+  }, []);
+
+  // Background slider effect
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-    }, 3000); // Change slide every 3 seconds
+    }, 5000); // Changed to 5 seconds for smoother experience
 
     return () => clearInterval(timer);
   }, [slides.length]);
+
+  // Typing animation effect
+  useEffect(() => {
+    let currentIndex = 0;
+    const typingTimer = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setTypedText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingTimer);
+      }
+    }, 100);
+
+    return () => clearInterval(typingTimer);
+  }, []);
+
+  // Mouse parallax effect
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (heroRef.current) {
+        const rect = heroRef.current.getBoundingClientRect();
+        const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
+        const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
+        setMousePosition({ x, y });
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   const featuredProducts = [
     {
@@ -55,52 +106,143 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       <Navbar />
 
-  {/* Hero Section */}
-<section className="relative text-white py-20 md:py-32 bg-cover bg-center overflow-hidden">
-  {/* Background Slider */}
+  {/* Enhanced Hero Section */}
+<section ref={heroRef} className="relative text-white py-24 md:py-40 bg-cover bg-center overflow-hidden min-h-screen flex items-center">
+  {/* Background Slider with improved transitions */}
   <div className="absolute inset-0">
     {slides.map((slide, index) => (
       <div
         key={index}
-        className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
-          index === currentSlide ? 'opacity-20' : 'opacity-0'
+        className={`absolute inset-0 bg-cover bg-center transition-all duration-2000 ${
+          index === currentSlide ? 'opacity-30 scale-105' : 'opacity-0 scale-100'
         }`}
-        style={{ backgroundImage: `url(${slide})` }}
+        style={{ 
+          backgroundImage: `url(${slide})`,
+          transform: `scale(${index === currentSlide ? 1.05 : 1})`
+        }}
       ></div>
     ))}
   </div>
-  {/* Background Overlay */}
-  <div className="absolute inset-0 bg-gradient-to-br from-green-900/50 via-transparent to-green-800/50"></div>
 
-  <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-16 text-center">
-    <div className="animate-fade-in-up">
-      <h1 className="text-5xl md:text-6xl font-bold mb-6">
-        Building Tomorrow's
-        <span className="block text-green-300">Infrastructure Today</span>
-      </h1>
+  {/* Animated Gradient Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-br from-green-900/80 via-gray-900/70 to-green-800/80 animate-gradient-shift"></div>
+  
+  {/* Pattern Overlay */}
+  <div className="absolute inset-0 hero-pattern"></div>
 
-      <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
-        Vedant Enterprises delivers premium construction materials with unmatched
-        quality, reliability, and sustainability for projects across Maharashtra.
-      </p>
+  {/* Floating Particles */}
+  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    {isMounted && particles.map((particle) => (
+      <div
+        key={particle.id}
+        className={`absolute w-2 h-2 bg-green-400/30 rounded-full ${particle.animationClass}`}
+        style={{
+          left: `${particle.left}%`,
+          top: `${particle.top}%`,
+          animationDelay: `${particle.animationDelay}s`,
+        }}
+      ></div>
+    ))}
+  </div>
 
-      <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="#products"
-          className="bg-green-600 hover:bg-green-700 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 inline-flex items-center justify-center"
-        >
-          Explore Products
-          <ArrowRight className="ml-2 w-5 h-5" />
-        </a>
+  {/* Geometric Shapes */}
+  <div className="absolute top-20 right-10 w-32 h-32 border-4 border-green-400/20 rounded-full animate-rotate-shape hidden lg:block"></div>
+  <div className="absolute bottom-20 left-10 w-40 h-40 bg-gradient-to-br from-green-500/10 to-blue-500/10 animate-morph-shape hidden lg:block"></div>
+  <div className="absolute top-1/2 right-1/4 w-24 h-24 border-4 border-green-300/20 rotate-45 animate-float hidden lg:block"></div>
 
-        <a
-          href="/contact"
-          className="border-2 border-white hover:bg-white hover:text-gray-800 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 inline-flex items-center justify-center"
-        >
-          Get Quote
-        </a>
+  <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 w-full">
+    <div className="text-center">
+      {/* Trust Badge */}
+      <div 
+        className="inline-flex items-center bg-white/10 backdrop-blur-md px-6 py-3 rounded-full mb-8 animate-smooth-reveal badge-glow border border-green-400/30"
+        style={{
+          transform: `translate(${mousePosition.x * 5}px, ${mousePosition.y * 5}px)`
+        }}
+      >
+        <Shield className="w-5 h-5 text-green-400 mr-2 animate-scale-pulse" />
+        <span className="text-sm font-semibold text-white">ISO 9001:2015 Certified | 15+ Years of Excellence</span>
       </div>
+
+      {/* Main Heading with Parallax */}
+      <div 
+        className="animate-fade-in-up parallax-slow"
+        style={{
+          transform: `translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px)`
+        }}
+      >
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+          Building Tomorrow's
+          <span className="block text-gradient-animated mt-2">
+            {typedText}
+            <span className="inline-block w-1 h-12 md:h-16 bg-green-400 ml-2 animate-pulse"></span>
+          </span>
+        </h1>
+
+        {/* Tagline */}
+        <p className="text-xl md:text-3xl mb-6 max-w-4xl mx-auto leading-relaxed font-light animate-fade-in-up delay-200">
+          Vedant Enterprises delivers premium construction materials with unmatched
+          quality, reliability, and sustainability for projects across Maharashtra.
+        </p>
+
+        {/* Value Propositions */}
+        <div className="flex flex-wrap justify-center gap-6 mb-10 animate-fade-in-up delay-300">
+          <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300">
+            <CheckCircle className="w-5 h-5 text-green-400 mr-2" />
+            <span className="text-sm font-medium">Premium Quality</span>
+          </div>
+          <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300">
+            <Zap className="w-5 h-5 text-green-400 mr-2" />
+            <span className="text-sm font-medium">Fast Delivery</span>
+          </div>
+          <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300">
+            <Award className="w-5 h-5 text-green-400 mr-2" />
+            <span className="text-sm font-medium">Trusted by 500+</span>
+          </div>
+        </div>
+
+        {/* CTA Buttons with Enhanced Effects */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-400">
+          <a
+            href="#products"
+            className="group bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 px-10 py-5 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 inline-flex items-center justify-center btn-ripple btn-shine shadow-2xl hover:shadow-green-500/50"
+            style={{
+              transform: `translate(${mousePosition.x * -3}px, ${mousePosition.y * -3}px)`
+            }}
+          >
+            Explore Products
+            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </a>
+
+          <a
+            href="/contact"
+            className="group border-2 border-white/80 hover:bg-white hover:text-gray-900 px-10 py-5 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 inline-flex items-center justify-center backdrop-blur-sm bg-white/5 shadow-2xl"
+            style={{
+              transform: `translate(${mousePosition.x * -3}px, ${mousePosition.y * -3}px)`
+            }}
+          >
+            Get Free Quote
+            <Star className="ml-2 w-5 h-5 group-hover:rotate-180 transition-transform duration-500" />
+          </a>
+        </div>
+      </div>
+
     </div>
+  </div>
+
+  {/* Slide Indicators */}
+  <div className="absolute bottom-8 right-8 flex gap-2 z-20">
+    {slides.map((_, index) => (
+      <button
+        key={index}
+        onClick={() => setCurrentSlide(index)}
+        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+          index === currentSlide 
+            ? 'bg-green-400 w-8' 
+            : 'bg-white/30 hover:bg-white/50'
+        }`}
+        aria-label={`Go to slide ${index + 1}`}
+      ></button>
+    ))}
   </div>
 </section>
 
