@@ -65,11 +65,11 @@ function ContactForm() {
             <div className="flex justify-center space-x-6 mb-8">
               <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
                 <Phone className="w-5 h-5" />
-                <span className="font-semibold">+91 8048619027</span>
+                <a href="tel:+918048619027" className="font-semibold hover:underline">+91 8048619027</a>
               </div>
               <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
                 <Mail className="w-5 h-5" />
-                <span className="font-semibold">info@vedantenterprises.com</span>
+                <a href="mailto:info@vedantenterprises.com" className="font-semibold hover:underline">info@vedantenterprises.com</a>
               </div>
             </div>
             <div className="flex justify-center">

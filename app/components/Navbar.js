@@ -164,7 +164,7 @@ export default function Navbar() {
       {/* Top Bar */}
       <div className="gradient-primary text-white py-3 px-4 md:px-8 animate-fade-in-up">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-sm">
-          <div className="flex flex-col md:flex-row md:space-x-6 space-y-1 md:space-y-0">
+          <div className="flex flex-col md:flex-row md:space-x-6 space-y-1 md:space-y-0 w-full md:w-auto">
             <div className="flex items-center space-x-2">
               <FileText className="w-4 h-4" />
               <span>GST No: 27AMKPC3004A1ZW</span>
@@ -173,8 +173,12 @@ export default function Navbar() {
               <MapPin className="w-4 h-4" />
               <span>Address: Haveli Pune - 412201, Maharashtra, India</span>
             </div>
+            <div className="md:hidden flex items-center space-x-2">
+              <Phone className="w-4 h-4" />
+              <span>+91 8048619027</span>
+            </div>
           </div>
-          <div className="flex items-center space-x-2">
+          <div className="hidden md:flex items-center space-x-2">
             <Phone className="w-4 h-4" />
             <span>+91 8048619027</span>
           </div>
@@ -194,123 +198,125 @@ export default function Navbar() {
             <li><Link href="/" className="hover:text-white transition-all duration-300 relative group">Home
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
             </Link></li>
-            <li 
-              className="relative group"
-              onMouseEnter={() => setIsProductsDropdownOpen(true)}
-              onMouseLeave={() => setIsProductsDropdownOpen(false)}
-            >
-              <Link href="/products" className="hover:text-white transition-all duration-300 relative flex items-center cursor-pointer">
-                Products
-                <ChevronDown className={`ml-1 w-4 h-4 transition-transform duration-300 ${isProductsDropdownOpen ? 'rotate-180' : ''}`} />
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-              
-              {/* Modern Mega Menu Dropdown */}
+            <li className="relative">
               <div
-                className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 transition-all duration-500 ${
-                  isProductsDropdownOpen 
-                    ? 'opacity-100 visible translate-y-0' 
-                    : 'opacity-0 invisible -translate-y-4'
-                }`}
-                style={{ pointerEvents: isProductsDropdownOpen ? 'auto' : 'none' }}
+                className="relative group"
+                onMouseEnter={() => setIsProductsDropdownOpen(true)}
+                onMouseLeave={() => setIsProductsDropdownOpen(false)}
               >
-                {/* Arrow pointer */}
-                <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rotate-45 border-l border-t border-gray-200"></div>
-                
-                {/* Main dropdown container */}
-                <div className="relative bg-gradient-to-br from-white via-gray-50 to-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden backdrop-blur-sm">
-                  {/* Decorative gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 via-transparent to-blue-500/5 pointer-events-none"></div>
+                <Link href="/products" className="hover:text-white transition-all duration-300 relative flex items-center cursor-pointer">
+                  Products
+                  <ChevronDown className={`ml-1 w-4 h-4 transition-transform duration-300 ${isProductsDropdownOpen ? 'rotate-180' : ''}`} />
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+
+                {/* Modern Mega Menu Dropdown */}
+                <div
+                  className={`absolute top-full left-1/2 -translate-x-1/2 mt-0 transition-all duration-500 ${
+                    isProductsDropdownOpen
+                      ? 'opacity-100 visible translate-y-0'
+                      : 'opacity-0 invisible -translate-y-2'
+                  }`}
+                  style={{ pointerEvents: isProductsDropdownOpen ? 'auto' : 'none' }}
+                >
+                  {/* Arrow pointer */}
+                  <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rotate-45 border-l border-t border-gray-200 z-10"></div>
                   
-                  <div className="relative grid grid-cols-3 gap-0 w-[800px]">
-                    {menuData.map((category, index) => (
-                      <div
-                        key={index}
-                        onMouseEnter={() => toggleCategory(index)}
-                        className={`group/item relative p-6 transition-all duration-300 border-r border-b border-gray-100 last:border-r-0 ${
-                          expandedCategories[index] 
-                            ? 'bg-gradient-to-br from-green-50 to-blue-50 shadow-inner' 
-                            : 'hover:bg-gradient-to-br hover:from-gray-50 hover:to-white'
-                        }`}
-                      >
-                        {/* Category icon background */}
-                        <div className={`absolute top-4 right-4 w-12 h-12 rounded-full transition-all duration-300 ${
-                          expandedCategories[index]
-                            ? 'bg-gradient-to-br from-green-400 to-green-600 opacity-20 scale-110'
-                            : 'bg-gray-200 opacity-0 group-hover/item:opacity-10'
-                        }`}></div>
-                        
-                        <div className="relative">
-                          {/* Category title */}
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                              expandedCategories[index]
-                                ? 'bg-gradient-to-br from-green-500 to-green-600 shadow-lg scale-110'
-                                : 'bg-gradient-to-br from-gray-200 to-gray-300 group-hover/item:from-green-400 group-hover/item:to-green-500'
-                            }`}>
-                              <span className="text-white text-lg font-bold">
-                                {category.title.charAt(0)}
-                              </span>
-                            </div>
-                            <div>
-                              <h3 className={`font-bold text-sm transition-colors duration-300 ${
-                                expandedCategories[index] ? 'text-green-700' : 'text-gray-800 group-hover/item:text-green-600'
+                  {/* Main dropdown container */}
+                  <div className="relative bg-gradient-to-br from-white via-gray-50 to-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden backdrop-blur-sm pt-2">
+                    {/* Decorative gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 via-transparent to-blue-500/5 pointer-events-none"></div>
+                    
+                    <div className="relative grid grid-cols-3 gap-0 w-[800px]">
+                      {menuData.map((category, index) => (
+                        <div
+                          key={index}
+                          onMouseEnter={() => toggleCategory(index)}
+                          className={`group/item relative p-6 transition-all duration-300 border-r border-b border-gray-100 last:border-r-0 ${
+                            expandedCategories[index] 
+                              ? 'bg-gradient-to-br from-green-50 to-blue-50 shadow-inner' 
+                              : 'hover:bg-gradient-to-br hover:from-gray-50 hover:to-white'
+                          }`}
+                        >
+                          {/* Category icon background */}
+                          <div className={`absolute top-4 right-4 w-12 h-12 rounded-full transition-all duration-300 ${
+                            expandedCategories[index]
+                              ? 'bg-gradient-to-br from-green-400 to-green-600 opacity-20 scale-110'
+                              : 'bg-gray-200 opacity-0 group-hover/item:opacity-10'
+                          }`}></div>
+                          
+                          <div className="relative">
+                            {/* Category title */}
+                            <div className="flex items-center gap-3 mb-3">
+                              <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                                expandedCategories[index]
+                                  ? 'bg-gradient-to-br from-green-500 to-green-600 shadow-lg scale-110'
+                                  : 'bg-gradient-to-br from-gray-200 to-gray-300 group-hover/item:from-green-400 group-hover/item:to-green-500'
                               }`}>
-                                {category.title}
-                              </h3>
-                              <p className="text-xs text-gray-500">
-                                {category.subcategories.length} products
-                              </p>
+                                <span className="text-white text-lg font-bold">
+                                  {category.title.charAt(0)}
+                                </span>
+                              </div>
+                              <div>
+                                <h3 className={`font-bold text-sm transition-colors duration-300 ${
+                                  expandedCategories[index] ? 'text-green-700' : 'text-gray-800 group-hover/item:text-green-600'
+                                }`}>
+                                  {category.title}
+                                </h3>
+                                <p className="text-xs text-gray-500">
+                                  {category.subcategories.length} products
+                                </p>
+                              </div>
                             </div>
-                          </div>
-                          
-                          {/* Subcategories */}
-                          <div className={`space-y-1 transition-all duration-300 ${
-                            expandedCategories[index] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-                          }`}>
-                            {category.subcategories.map((sub, subIndex) => (
-                              <Link
-                                key={subIndex}
-                                href={getProductUrl(sub)}
-                                onClick={() => setIsProductsDropdownOpen(false)}
-                                className="block px-3 py-2 text-sm text-gray-600 hover:text-green-600 hover:bg-white rounded-lg transition-all duration-200 hover:translate-x-1 hover:shadow-sm group/link"
+                            
+                            {/* Subcategories */}
+                            <div className={`space-y-1 transition-all duration-300 ${
+                              expandedCategories[index] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+                            }`}>
+                              {category.subcategories.map((sub, subIndex) => (
+                                <Link
+                                  key={subIndex}
+                                  href={getProductUrl(sub)}
+                                  onClick={() => setIsProductsDropdownOpen(false)}
+                                  className="block px-3 py-2 text-sm text-gray-600 hover:text-green-600 hover:bg-white rounded-lg transition-all duration-200 hover:translate-x-1 hover:shadow-sm group/link"
+                                >
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 opacity-0 group-hover/link:opacity-100 transition-opacity"></div>
+                                    <span className="line-clamp-2">{sub}</span>
+                                  </div>
+                                </Link>
+                              ))}
+                            </div>
+                            
+                            {/* View all link when not expanded */}
+                            {!expandedCategories[index] && (
+                              <button
+                                onClick={() => toggleCategory(index)}
+                                className="mt-3 text-xs text-green-600 hover:text-green-700 font-semibold flex items-center gap-1 group-hover/item:gap-2 transition-all"
                               >
-                                <div className="flex items-center gap-2">
-                                  <div className="w-1.5 h-1.5 rounded-full bg-green-500 opacity-0 group-hover/link:opacity-100 transition-opacity"></div>
-                                  <span className="line-clamp-2">{sub}</span>
-                                </div>
-                              </Link>
-                            ))}
+                                View all
+                                <ChevronDown className="w-3 h-3" />
+                              </button>
+                            )}
                           </div>
-                          
-                          {/* View all link when not expanded */}
-                          {!expandedCategories[index] && (
-                            <button
-                              onClick={() => toggleCategory(index)}
-                              className="mt-3 text-xs text-green-600 hover:text-green-700 font-semibold flex items-center gap-1 group-hover/item:gap-2 transition-all"
-                            >
-                              View all
-                              <ChevronDown className="w-3 h-3" />
-                            </button>
-                          )}
                         </div>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  {/* Footer with CTA */}
-                  <div className="bg-gradient-to-r from-green-600 to-green-700 px-6 py-4 flex items-center justify-between">
-                    <div className="text-white">
-                      <p className="text-sm font-semibold">Need help choosing?</p>
-                      <p className="text-xs opacity-90">Contact our experts for guidance</p>
+                      ))}
                     </div>
-                    <Link
-                      href="/contact"
-                      onClick={() => setIsProductsDropdownOpen(false)}
-                      className="bg-white text-green-600 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg"
-                    >
-                      Contact Us
-                    </Link>
+                    
+                    {/* Footer with CTA */}
+                    <div className="bg-gradient-to-r from-green-600 to-green-700 px-6 py-4 flex items-center justify-between">
+                      <div className="text-white">
+                        <p className="text-sm font-semibold">Need help choosing?</p>
+                        <p className="text-xs opacity-90">Contact our experts for guidance</p>
+                      </div>
+                      <Link
+                        href="/contact"
+                        onClick={() => setIsProductsDropdownOpen(false)}
+                        className="bg-white text-green-600 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg"
+                      >
+                        Contact Us
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>

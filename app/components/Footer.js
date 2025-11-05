@@ -1,6 +1,43 @@
-import { Phone, Mail, MapPin, FileText, Facebook, Twitter, Instagram, Linkedin, MessageCircle } from 'lucide-react';
+'use client';
+
+import { useState } from 'react';
+import { Phone, Mail, MapPin, FileText, Facebook, Twitter, Instagram, Linkedin, MessageCircle, CheckCircle, AlertCircle } from 'lucide-react';
 
 export default function Footer() {
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!email || !email.includes('@')) {
+      setSubmitStatus('error');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    // Simulate API call
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
+
+      // In a real application, you would send this to your backend API
+      // await fetch('/api/newsletter', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({ email })
+      // });
+
+      setSubmitStatus('success');
+      setEmail('');
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <>
       {/* Floating Action Button */}
@@ -24,10 +61,15 @@ export default function Footer() {
                 Leading provider of high-quality construction materials and solutions in Pune, Maharashtra. Committed to excellence and sustainability.
               </p>
               <div className="flex space-x-4">
-                <Facebook className="w-5 h-5 cursor-pointer hover:text-green-200 transition-all duration-300 animate-icon-pulse hover:scale-125" />
-                <Twitter className="w-5 h-5 cursor-pointer hover:text-green-200 transition-all duration-300 animate-icon-pulse hover:scale-125" />
-                <Instagram className="w-5 h-5 cursor-pointer hover:text-green-200 transition-all duration-300 animate-icon-pulse hover:scale-125" />
-                <Linkedin className="w-5 h-5 cursor-pointer hover:text-green-200 transition-all duration-300 animate-icon-pulse hover:scale-125" />
+                <a href="https://www.facebook.com/sharer.php?u=https://www.vedantspunpipes.com/" target="_blank" rel="noopener noreferrer">
+                  <Facebook className="w-5 h-5 cursor-pointer hover:text-green-200 transition-all duration-300 animate-icon-pulse hover:scale-125" />
+                </a>
+                <a href="https://twitter.com/share?url=https://www.vedantspunpipes.com/&text=Vedant%20Enterprises" target="_blank" rel="noopener noreferrer">
+                  <Twitter className="w-5 h-5 cursor-pointer hover:text-green-200 transition-all duration-300 animate-icon-pulse hover:scale-125" />
+                </a>
+                <a href="https://www.linkedin.com/cws/share?url=https://www.vedantspunpipes.com/" target="_blank" rel="noopener noreferrer">
+                  <Linkedin className="w-5 h-5 cursor-pointer hover:text-green-200 transition-all duration-300 animate-icon-pulse hover:scale-125" />
+                </a>
               </div>
             </div>
 
@@ -36,7 +78,7 @@ export default function Footer() {
               <h4 className="text-lg font-semibold mb-4 bg-gradient-to-r from-white to-green-200 bg-clip-text text-transparent">Quick Links</h4>
               <ul className="space-y-3">
                 <li><a href="/" className="text-sm hover:text-green-200 transition-all duration-300 hover:translate-x-2 inline-block">Home</a></li>
-                <li><a href="#products" className="text-sm hover:text-green-200 transition-all duration-300 hover:translate-x-2 inline-block">Products</a></li>
+                <li><a href="/products" className="text-sm hover:text-green-200 transition-all duration-300 hover:translate-x-2 inline-block">Products</a></li>
                 <li><a href="/gallery" className="text-sm hover:text-green-200 transition-all duration-300 hover:translate-x-2 inline-block">Gallery</a></li>
                 <li><a href="/about" className="text-sm hover:text-green-200 transition-all duration-300 hover:translate-x-2 inline-block">About Us</a></li>
                 <li><a href="/contact" className="text-sm hover:text-green-200 transition-all duration-300 hover:translate-x-2 inline-block">Contact Us</a></li>
@@ -70,16 +112,43 @@ export default function Footer() {
             <div className="glassmorphism p-6 animate-stagger-4 hover-lift">
               <h4 className="text-lg font-semibold mb-4 bg-gradient-to-r from-white to-green-200 bg-clip-text text-transparent">Stay Updated</h4>
               <p className="text-sm mb-4 opacity-90">Subscribe to our newsletter for the latest updates and offers.</p>
-              <div className="flex">
+
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <div className="flex items-center gap-2 mb-3 p-2 bg-green-500/20 border border-green-500/30 rounded-lg">
+                  <CheckCircle className="w-4 h-4 text-green-400" />
+                  <span className="text-sm text-green-200">Successfully subscribed!</span>
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="flex items-center gap-2 mb-3 p-2 bg-red-500/20 border border-red-500/30 rounded-lg">
+                  <AlertCircle className="w-4 h-4 text-red-400" />
+                  <span className="text-sm text-red-200">Please enter a valid email address.</span>
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="flex">
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="flex-1 px-3 py-3 text-white placeholder-white border border-white/30 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-300 bg-transparent"
+                  disabled={isSubmitting}
+                  className="flex-1 px-3 py-3 text-white placeholder-white border border-white/30 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-300 bg-transparent disabled:opacity-50"
                 />
-                <button className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 px-4 py-3 rounded-r-lg transition-all duration-300 hover:scale-105 shadow-md">
-                  Subscribe
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 px-4 py-3 rounded-r-lg transition-all duration-300 hover:scale-105 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  ) : (
+                    'Subscribe'
+                  )}
                 </button>
-              </div>
+              </form>
             </div>
           </div>
 

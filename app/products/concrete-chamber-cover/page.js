@@ -9,20 +9,11 @@ export default function ConcreteChamberCover() {
 
   const relatedProducts = [
     {
-      name: 'RCC Chamber Cover',
-      image: '/assets/rcc-chamber-cover.webp',
+      name: 'Chamber Cover',
+      image: '/assets/cc1-300x400.webp',
       link: '/products/rcc-chamber-cover'
     },
-    {
-      name: 'RCC Circular Manhole Cover',
-      image: '/assets/rcc-circular-manhole-cover.webp',
-      link: '/products/rcc-circular-manhole-cover'
-    },
-    {
-      name: 'RCC Manhole Cover in all size',
-      image: '/assets/rcc-manhole-cover.webp',
-      link: '/products/rcc-manhole-cover-all-sizes'
-    },
+  
     {
       name: 'RCC Pipe All Sizes',
       image: '/assets/150mm-dia-rcc-pipe.webp',
@@ -43,7 +34,7 @@ export default function ConcreteChamberCover() {
               <div className="animate-slide-in-left">
                 <div className="rounded-3xl overflow-hidden shadow-2xl hover-lift">
                   <img
-                    src="/assets/concrete-chamber-cover.webp"
+                    src="\assets\cc2-300x400.webp"
                     alt="Concrete Chamber Cover"
                     className="w-full h-full object-cover"
                   />
@@ -147,27 +138,7 @@ export default function ConcreteChamberCover() {
               </div>
             </div>
 
-            <div className="bg-gray-50 rounded-xl p-6 mb-12">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Available Sizes and Prices</h3>
-              <div className="overflow-x-auto">
-                <table className="w-full bg-white rounded-lg shadow-sm">
-                  <thead className="bg-gradient-to-r from-green-600 to-green-700 text-white">
-                    <tr>
-                      <th className="px-4 py-3 text-left font-semibold">Sizes</th>
-                      <th className="px-4 py-3 text-left font-semibold">Prices</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {pricingData.map((row, index) => (
-                      <tr key={index} className={`border-b border-gray-200 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                        <td className="px-4 py-3 font-semibold text-gray-800">{row.size}</td>
-                        <td className="px-4 py-3 text-gray-600">{row.price}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+
           </div>
         </section>
 
@@ -194,10 +165,7 @@ export default function ConcreteChamberCover() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                       <h3 className="text-xl font-bold mb-2">{product.name}</h3>
-                      <div className="flex items-center mt-3 text-sm">
-                        <Eye className="w-4 h-4 mr-1" />
-                        <span>Click to view details</span>
-                      </div>
+
                     </div>
                   </div>
                   <div className="absolute top-4 right-4 bg-white bg-opacity-90 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
