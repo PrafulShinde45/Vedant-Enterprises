@@ -38,7 +38,7 @@ export default function About() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative text-white py-20 md:py-32 bg-cover bg-center overflow-hidden">
+      <section className="relative text-white py-32 sm:py-36 md:py-40 lg:py-44 xl:py-48 bg-cover bg-center overflow-hidden">
         {/* Background Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-green-900/50 via-transparent to-green-800/50"></div>
         <div className="absolute inset-0 bg-[url('/assets/bg-pic.webp')] bg-cover bg-center opacity-20"></div>
@@ -48,7 +48,7 @@ export default function About() {
           <TrendingUp className="floating-element w-6 h-6 text-blue-300 opacity-30 top-32 right-20" />
           <Heart className="floating-element w-10 h-10 text-purple-300 opacity-25 bottom-20 left-20" />
         </div>
-        <div className="relative max-w-6xl mx-auto px-6 md:px-16 pt-12 md:pt-16 text-center">
+        <div className="relative max-w-6xl mx-auto px-6 md:px-16 pt-20 sm:pt-24 md:pt-28 lg:pt-32 text-center">
           <div className="animate-fade-in-up">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-green-200 to-white bg-clip-text text-transparent leading-tight">
               About Vedant Enterprises

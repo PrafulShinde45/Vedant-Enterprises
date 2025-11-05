@@ -97,24 +97,24 @@ export default function RCCPipeAllSizes() {
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-full bg-white rounded-xl shadow-lg overflow-hidden">
+              <table className="w-full bg-white rounded-xl shadow-lg overflow-hidden min-w-[600px]">
                 <thead className="bg-gradient-to-r from-green-600 to-green-700 text-white">
                   <tr>
-                    <th className="px-6 py-4 text-left font-semibold">SIZES (mm)</th>
-                    <th className="px-6 py-4 text-left font-semibold">CLASS</th>
-                    <th className="px-6 py-4 text-left font-semibold">THICKNESS (mm)</th>
-                    <th className="px-6 py-4 text-left font-semibold">LENGTH</th>
-                    <th className="px-6 py-4 text-left font-semibold">COLLAR TYPE</th>
+                    <th className="px-3 sm:px-6 py-3 sm:py-4 text-left font-semibold text-sm sm:text-base">SIZES (mm)</th>
+                    <th className="px-3 sm:px-6 py-3 sm:py-4 text-left font-semibold text-sm sm:text-base">CLASS</th>
+                    <th className="px-3 sm:px-6 py-3 sm:py-4 text-left font-semibold text-sm sm:text-base">THICKNESS (mm)</th>
+                    <th className="px-3 sm:px-6 py-3 sm:py-4 text-left font-semibold text-sm sm:text-base">LENGTH</th>
+                    <th className="px-3 sm:px-6 py-3 sm:py-4 text-left font-semibold text-sm sm:text-base">COLLAR TYPE</th>
                   </tr>
                 </thead>
                 <tbody>
                   {productData.map((row, index) => (
                     <tr key={index} className={`border-b border-gray-200 hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                      <td className="px-6 py-4 font-semibold text-gray-800">{row.size}</td>
-                      <td className="px-6 py-4 text-gray-600">{row.class}</td>
-                      <td className="px-6 py-4 text-gray-600">{row.thickness}</td>
-                      <td className="px-6 py-4 text-gray-600">{row.length}</td>
-                      <td className="px-6 py-4 text-gray-600">{row.collar}</td>
+                      <td className="px-3 sm:px-6 py-3 sm:py-4 font-semibold text-gray-800 text-sm sm:text-base">{row.size}</td>
+                      <td className="px-3 sm:px-6 py-3 sm:py-4 text-gray-600 text-sm sm:text-base">{row.class}</td>
+                      <td className="px-3 sm:px-6 py-3 sm:py-4 text-gray-600 text-sm sm:text-base">{row.thickness}</td>
+                      <td className="px-3 sm:px-6 py-3 sm:py-4 text-gray-600 text-sm sm:text-base">{row.length}</td>
+                      <td className="px-3 sm:px-6 py-3 sm:py-4 text-gray-600 text-sm sm:text-base">{row.collar}</td>
                     </tr>
                   ))}
                 </tbody>

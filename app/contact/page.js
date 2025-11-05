@@ -44,7 +44,7 @@ function ContactForm() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative text-white py-20 md:py-32 bg-cover bg-center overflow-hidden">
+      <section className="relative text-white py-32 sm:py-36 md:py-40 lg:py-44 xl:py-48 bg-cover bg-center overflow-hidden">
         {/* Background Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-green-900/60 via-transparent to-green-800/60"></div>
         <div className="absolute inset-0 bg-[url('/assets/g2.webp')] bg-cover bg-center opacity-20"></div>
@@ -54,7 +54,7 @@ function ContactForm() {
           <div className="absolute bottom-20 right-20 w-20 h-20 bg-blue-400 rounded-full blur-2xl animate-float opacity-30" style={{ animationDelay: '2s' }}></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-purple-400 rounded-full blur-3xl animate-float opacity-20" style={{ animationDelay: '4s' }}></div>
         </div>
-        <div className="relative max-w-6xl mx-auto px-6 md:px-16 pt-12 md:pt-16 text-center">
+        <div className="relative max-w-6xl mx-auto px-6 md:px-16 pt-20 sm:pt-24 md:pt-28 lg:pt-32 text-center">
           <div className="animate-fade-in-up">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-green-200 to-white bg-clip-text text-transparent leading-tight">
               Let's Build Together
@@ -62,12 +62,12 @@ function ContactForm() {
             <p className="text-lg sm:text-xl md:text-2xl mb-8 max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto leading-relaxed opacity-90">
               Connect with Vedant Enterprises for premium construction materials, expert guidance, and unparalleled service that brings your vision to life.
             </p>
-            <div className="flex justify-center space-x-6 mb-8">
-              <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
+            <div className="flex flex-col sm:flex-row justify-center sm:space-x-6 space-y-4 sm:space-y-0 mb-8">
+              <div className="flex items-center justify-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
                 <Phone className="w-5 h-5" />
                 <a href="tel:+918048619027" className="font-semibold hover:underline">+91 8048619027</a>
               </div>
-              <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
+              <div className="flex items-center justify-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
                 <Mail className="w-5 h-5" />
                 <a href="mailto:info@vedantenterprises.com" className="font-semibold hover:underline">info@vedantenterprises.com</a>
               </div>

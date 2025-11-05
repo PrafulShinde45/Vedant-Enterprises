@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ProductMenu from '../components/ProductMenu';
 import { Eye } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Products() {
   return (
@@ -40,128 +41,74 @@ export default function Products() {
       </section>
 
       <main className="flex-1 bg-gray-50">
-        {/* Featured Products Gallery */}
+        {/* All Products from Gallery with View Details */}
         <section className="py-16 bg-white">
           <div className="max-w-6xl mx-auto px-6 md:px-16">
             <div className="text-center mb-12 animate-fade-in-up">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Featured Products</h2>
-              <p className="text-lg text-gray-600">
-                Take a closer look at some of our premium construction materials
-              </p>
+              <h2 className="text-3xl font-bold text-gray-800 mb-4">All Products</h2>
+              <p className="text-lg text-gray-600">Hover any item and click View Details to open the product page.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* RCC Pipe */}
-              <div className="relative group cursor-pointer rounded-xl overflow-hidden shadow-lg hover-lift animate-bounce-in">
-                <div className="h-64 overflow-hidden">
-                  <img
-                    src="/assets/150mm-dia-rcc-pipe-300x400.webp"
-                    alt="RCC Pipe 150mm"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-xl font-bold mb-2">RCC Pipe 150mm</h3>
-                    <p className="text-sm opacity-90">Durable 150mm diameter RCC pipe</p>
-                  </div>
-                </div>
-              </div>
+            {(() => {
+              const productCards = [
+                { image: '/assets/150mm-dia-rcc-pipe-300x400.webp', title: 'RCC Pipe 150mm', desc: 'Durable 150mm diameter RCC pipe', href: '/products/rcc-pipe-all-sizes' },
+                { image: '/assets/200mm-rcc-pipe-300x400.webp', title: 'RCC Pipe 200mm', desc: 'High-quality 200mm RCC pipe', href: '/products/rcc-pipe-200mm' },
+                { image: '/assets/300mm-cement-pipe-300x400.webp', title: 'Cement Pipe 300mm', desc: 'Strong 300mm cement pipe', href: '/products/300-mm-cement-pipe' },
+                { image: '/assets/half-round-pipe-300x400.webp', title: 'Half Round Pipe', desc: 'Versatile half-round pipe design', href: '/products/rcc-half-round-pipe' },
+                { image: '/assets/rcc-spun-pipe-300x400.webp', title: 'RCC Spun Pipe', desc: 'Precision spun RCC pipe', href: '/products/rcc-spun-pipe' },
+                { image: '/assets/rcc-cement-pipe-300x400.webp', title: 'RCC Cement Pipe', desc: 'High-strength RCC cement pipe', href: '/products/rcc-cement-pipe' },
+                { image: '/assets/manh1-300x400.webp', title: 'Manhole Cover Type 1', desc: 'Heavy-duty manhole cover', href: '/products/rcc-manhole-cover-all-sizes' },
+                { image: '/assets/manh2-300x400.webp', title: 'Manhole Cover Type 2', desc: 'Industrial grade manhole cover', href: '/products/1200mm-x-1200mm-heavy-duty-plain-drain-cover' },
+                { image: '/assets/manh3-300x400.webp', title: 'Manhole Cover Type 3', desc: 'Reinforced manhole cover', href: '/products/1200mm-x-1200mm-heavy-duty-perforated-drain-cover' },
+                { image: '/assets/st1-300x400.webp', title: 'Septic Tank Model 1', desc: 'Reliable septic tank system', href: '/products/readymade-rcc-septic-tank' },
+                { image: '/assets/st2-300x400.webp', title: 'Septic Tank Model 2', desc: 'Advanced septic tank design', href: '/products/600-mm-dia-rcc-septic-tank' },
+                { image: '/assets/st3-300x400.webp', title: 'Septic Tank Model 3', desc: 'Premium septic tank solution', href: '/products/900-mm-dia-rcc-septic-tank' },
+                { image: '/assets/cc1-300x400.webp', title: 'Chamber Cover Type 1', desc: 'Durable chamber cover', href: '/products/concrete-chamber-cover' },
+                { image: '/assets/cc2-300x400.webp', title: 'Chamber Cover Type 2', desc: 'Weather-resistant chamber cover', href: '/products/rcc-chamber-cover' },
+                { image: '/assets/cc3-300x400.webp', title: 'Chamber Cover Type 3', desc: 'Heavy-duty chamber cover', href: '/products/rcc-circular-manhole-cover' },
+                { image: '/assets/WhatsApp-Image-2025-02-01-at-6.07.07-PM-300x400.webp', title: 'Construction Material', desc: 'Quality construction material', href: '/products/rcc-wall-compound' },
+                { image: '/assets/slider2.webp', title: 'Construction Equipment', desc: 'Advanced construction equipment and machinery', href: '/products' },
+                { image: '/assets/g2.webp', title: 'General Product', desc: 'High-quality construction material', href: '/products/rcc-wall-compound' }
+              ];
 
-              {/* Cement Pipe */}
-              <div className="relative group cursor-pointer rounded-xl overflow-hidden shadow-lg hover-lift animate-bounce-in" style={{ animationDelay: '0.1s' }}>
-                <div className="h-64 overflow-hidden">
-                  <img
-                    src="/assets/300mm-cement-pipe-300x400.webp"
-                    alt="Cement Pipe 300mm"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-xl font-bold mb-2">Cement Pipe 300mm</h3>
-                    <p className="text-sm opacity-90">Strong 300mm cement pipe</p>
-                  </div>
-                </div>
-              </div>
+              return (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {productCards.map((item, index) => (
+                    <div
+                      key={item.title + index}
+                      className="relative group rounded-xl overflow-hidden shadow-lg hover-lift animate-bounce-in"
+                      style={{ animationDelay: `${index * 0.06}s` }}
+                    >
+                      <div className="h-64 overflow-hidden">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                      </div>
 
-              {/* Manhole Cover */}
-              <div className="relative group cursor-pointer rounded-xl overflow-hidden shadow-lg hover-lift animate-bounce-in" style={{ animationDelay: '0.2s' }}>
-                <div className="h-64 overflow-hidden">
-                  <img
-                    src="/assets/manh1-300x400.webp"
-                    alt="Manhole Cover Type 1"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-xl font-bold mb-2">Manhole Cover Type 1</h3>
-                    <p className="text-sm opacity-90">Heavy-duty manhole cover</p>
-                  </div>
-                </div>
-              </div>
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                          <h3 className="text-xl font-bold mb-1">{item.title}</h3>
+                          <p className="text-sm opacity-90 mb-3">{item.desc}</p>
+                          <Link href={item.href} className="inline-flex items-center gap-2 text-sm font-semibold bg-white text-gray-900 px-3 py-2 rounded-md hover:bg-gray-100">
+                            <Eye className="w-4 h-4" />
+                            View Details
+                          </Link>
+                        </div>
+                      </div>
 
-              {/* Septic Tank */}
-              <div className="relative group cursor-pointer rounded-xl overflow-hidden shadow-lg hover-lift animate-bounce-in" style={{ animationDelay: '0.3s' }}>
-                <div className="h-64 overflow-hidden">
-                  <img
-                    src="/assets/st1-300x400.webp"
-                    alt="Septic Tank Model 1"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+                      {/* Quick eye button */}
+                      <Link href={item.href} className="absolute top-4 right-4 bg-white/95 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <Eye className="w-5 h-5 text-gray-800" />
+                      </Link>
+                    </div>
+                  ))}
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-xl font-bold mb-2">Septic Tank Model 1</h3>
-                    <p className="text-sm opacity-90">Reliable septic tank system</p>
-                  </div>
-                </div>
-              </div>
+              );
+            })()}
 
-              {/* Chamber Cover */}
-              <div className="relative group cursor-pointer rounded-xl overflow-hidden shadow-lg hover-lift animate-bounce-in" style={{ animationDelay: '0.4s' }}>
-                <div className="h-64 overflow-hidden">
-                  <img
-                    src="/assets/cc1-300x400.webp"
-                    alt="Chamber Cover Type 1"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-xl font-bold mb-2">Chamber Cover Type 1</h3>
-                    <p className="text-sm opacity-90">Durable chamber cover</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Construction Equipment */}
-              <div className="relative group cursor-pointer rounded-xl overflow-hidden shadow-lg hover-lift animate-bounce-in" style={{ animationDelay: '0.5s' }}>
-                <div className="h-64 overflow-hidden">
-                  <img
-                    src="/assets/slider2.webp"
-                    alt="Construction Equipment"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-xl font-bold mb-2">Construction Equipment</h3>
-                    <p className="text-sm opacity-90">Advanced construction equipment and machinery</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="text-center mt-12">
-              <a
-                href="/gallery"
-                className="bg-gradient-to-r from-green-600 to-green-700 text-white px-8 py-3 rounded-lg font-semibold hover:from-green-700 hover:to-green-800 transition-all duration-300 inline-block"
-              >
-                View All Products
-              </a>
-            </div>
           </div>
         </section>
 

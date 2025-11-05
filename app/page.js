@@ -107,7 +107,7 @@ export default function Home() {
       <Navbar />
 
   {/* Enhanced Hero Section */}
-<section ref={heroRef} className="relative text-white py-16 sm:py-20 md:py-32 lg:py-40 bg-cover bg-center overflow-hidden min-h-screen flex items-center">
+<section ref={heroRef} className="relative text-white py-12 sm:py-16 md:py-20 lg:py-32 xl:py-40 bg-cover bg-center overflow-hidden min-h-screen flex items-center">
   {/* Background Slider with improved transitions */}
   <div className="absolute inset-0">
     {slides.map((slide, index) => (
@@ -170,16 +170,16 @@ export default function Home() {
           transform: `translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px)`
         }}
       >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 leading-tight">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
           Building Tomorrow's
           <span className="block text-gradient-animated mt-1 sm:mt-2">
             {typedText}
-            <span className="inline-block w-1 h-8 sm:h-10 md:h-12 lg:h-16 bg-green-400 ml-1 sm:ml-2 animate-pulse"></span>
+            <span className="inline-block w-1 h-6 sm:h-8 md:h-10 lg:h-12 xl:h-14 2xl:h-16 bg-green-400 ml-1 sm:ml-2 animate-pulse"></span>
           </span>
         </h1>
 
         {/* Tagline */}
-        <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-4 sm:mb-6 max-w-4xl mx-auto leading-relaxed font-light animate-fade-in-up delay-200 px-2 sm:px-0">
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl mb-4 sm:mb-6 max-w-4xl mx-auto leading-relaxed font-light animate-fade-in-up delay-200 px-2 sm:px-0">
           Vedant Enterprises delivers premium construction materials with unmatched
           quality, reliability, and sustainability for projects across Maharashtra.
         </p>
@@ -201,27 +201,27 @@ export default function Home() {
         </div>
 
         {/* CTA Buttons with Enhanced Effects */}
-        <div className="hidden md:flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in-up delay-400">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in-up delay-400">
           <a
             href="#products"
-            className="group bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-105 inline-flex items-center justify-center btn-ripple btn-shine shadow-2xl hover:shadow-green-500/50"
+            className="group bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 px-4 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 md:py-4 lg:py-5 rounded-xl font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 hover:scale-105 inline-flex items-center justify-center btn-ripple btn-shine shadow-2xl hover:shadow-green-500/50 min-h-[44px]"
             style={{
               transform: `translate(${mousePosition.x * -3}px, ${mousePosition.y * -3}px)`
             }}
           >
             Explore Products
-            <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
           </a>
 
           <a
             href="/contact"
-            className="group border-2 border-white/80 hover:bg-white hover:text-gray-900 px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-105 inline-flex items-center justify-center backdrop-blur-sm bg-white/5 shadow-2xl"
+            className="group border-2 border-white/80 hover:bg-white hover:text-gray-900 px-4 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 md:py-4 lg:py-5 rounded-xl font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 hover:scale-105 inline-flex items-center justify-center backdrop-blur-sm bg-white/5 shadow-2xl min-h-[44px]"
             style={{
               transform: `translate(${mousePosition.x * -3}px, ${mousePosition.y * -3}px)`
             }}
           >
             Get Free Quote
-            <Star className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-180 transition-transform duration-500" />
+            <Star className="ml-2 w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 group-hover:rotate-180 transition-transform duration-500" />
           </a>
         </div>
       </div>

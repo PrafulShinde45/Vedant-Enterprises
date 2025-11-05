@@ -17,6 +17,7 @@ export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const searchInputRef = useRef(null);
+  const closeTimeoutRef = useRef(null);
   const [manuallyClosed, setManuallyClosed] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('manuallyClosed');
@@ -162,19 +163,19 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 shadow-lg">
       {/* Top Bar */}
-      <div className="gradient-primary text-white py-3 px-4 md:px-8 animate-fade-in-up">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-sm">
+      <div className="gradient-primary text-white py-2 sm:py-3 px-4 md:px-8 animate-fade-in-up">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-xs sm:text-sm">
           <div className="flex flex-col md:flex-row md:space-x-6 space-y-1 md:space-y-0 w-full md:w-auto">
             <div className="flex items-center space-x-2">
-              <FileText className="w-4 h-4" />
-              <span>GST No: 27AMKPC3004A1ZW</span>
+              <FileText className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+              <span className="truncate">GST No: 27AMKPC3004A1ZW</span>
             </div>
             <div className="flex items-center space-x-2">
-              <MapPin className="w-4 h-4" />
-              <span>Address: Haveli Pune - 412201, Maharashtra, India</span>
+              <MapPin className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+              <span className="truncate">Address: Haveli Pune - 412201, Maharashtra, India</span>
             </div>
             <div className="md:hidden flex items-center space-x-2">
-              <Phone className="w-4 h-4" />
+              <Phone className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
               <span>+91 8048619027</span>
             </div>
           </div>
@@ -201,8 +202,21 @@ export default function Navbar() {
             <li className="relative">
               <div
                 className="relative group"
-                onMouseEnter={() => setIsProductsDropdownOpen(true)}
-                onMouseLeave={() => setIsProductsDropdownOpen(false)}
+                onMouseEnter={() => {
+                  if (closeTimeoutRef.current) {
+                    clearTimeout(closeTimeoutRef.current);
+                    closeTimeoutRef.current = null;
+                  }
+                  setIsProductsDropdownOpen(true);
+                }}
+                onMouseLeave={() => {
+                  if (closeTimeoutRef.current) {
+                    clearTimeout(closeTimeoutRef.current);
+                  }
+                  closeTimeoutRef.current = setTimeout(() => {
+                    setIsProductsDropdownOpen(false);
+                  }, 150);
+                }}
               >
                 <Link href="/products" className="hover:text-white transition-all duration-300 relative flex items-center cursor-pointer">
                   Products
@@ -210,111 +224,55 @@ export default function Navbar() {
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                 </Link>
 
-                {/* Modern Mega Menu Dropdown */}
+                {/* Professional Mega Menu Dropdown */}
                 <div
-                  className={`absolute top-full left-1/2 -translate-x-1/2 mt-0 transition-all duration-500 ${
-                    isProductsDropdownOpen
-                      ? 'opacity-100 visible translate-y-0'
-                      : 'opacity-0 invisible -translate-y-2'
+                  className={`absolute top-full left-1/2 -translate-x-1/2 mt-0 pt-2 w-[960px] max-w-[92vw] transition-all duration-200 ${
+                    isProductsDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-1'
                   }`}
                   style={{ pointerEvents: isProductsDropdownOpen ? 'auto' : 'none' }}
                 >
-                  {/* Arrow pointer */}
-                  <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rotate-45 border-l border-t border-gray-200 z-10"></div>
-                  
-                  {/* Main dropdown container */}
-                  <div className="relative bg-gradient-to-br from-white via-gray-50 to-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden backdrop-blur-sm pt-2">
-                    {/* Decorative gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 via-transparent to-blue-500/5 pointer-events-none"></div>
-                    
-                    <div className="relative grid grid-cols-3 gap-0 w-[800px]">
-                      {menuData.map((category, index) => (
-                        <div
-                          key={index}
-                          onMouseEnter={() => toggleCategory(index)}
-                          className={`group/item relative p-6 transition-all duration-300 border-r border-b border-gray-100 last:border-r-0 ${
-                            expandedCategories[index] 
-                              ? 'bg-gradient-to-br from-green-50 to-blue-50 shadow-inner' 
-                              : 'hover:bg-gradient-to-br hover:from-gray-50 hover:to-white'
-                          }`}
-                        >
-                          {/* Category icon background */}
-                          <div className={`absolute top-4 right-4 w-12 h-12 rounded-full transition-all duration-300 ${
-                            expandedCategories[index]
-                              ? 'bg-gradient-to-br from-green-400 to-green-600 opacity-20 scale-110'
-                              : 'bg-gray-200 opacity-0 group-hover/item:opacity-10'
-                          }`}></div>
-                          
-                          <div className="relative">
-                            {/* Category title */}
-                            <div className="flex items-center gap-3 mb-3">
-                              <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                                expandedCategories[index]
-                                  ? 'bg-gradient-to-br from-green-500 to-green-600 shadow-lg scale-110'
-                                  : 'bg-gradient-to-br from-gray-200 to-gray-300 group-hover/item:from-green-400 group-hover/item:to-green-500'
-                              }`}>
-                                <span className="text-white text-lg font-bold">
-                                  {category.title.charAt(0)}
-                                </span>
-                              </div>
-                              <div>
-                                <h3 className={`font-bold text-sm transition-colors duration-300 ${
-                                  expandedCategories[index] ? 'text-green-700' : 'text-gray-800 group-hover/item:text-green-600'
-                                }`}>
-                                  {category.title}
-                                </h3>
-                                <p className="text-xs text-gray-500">
-                                  {category.subcategories.length} products
-                                </p>
-                              </div>
-                            </div>
-                            
-                            {/* Subcategories */}
-                            <div className={`space-y-1 transition-all duration-300 ${
-                              expandedCategories[index] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-                            }`}>
-                              {category.subcategories.map((sub, subIndex) => (
-                                <Link
-                                  key={subIndex}
-                                  href={getProductUrl(sub)}
-                                  onClick={() => setIsProductsDropdownOpen(false)}
-                                  className="block px-3 py-2 text-sm text-gray-600 hover:text-green-600 hover:bg-white rounded-lg transition-all duration-200 hover:translate-x-1 hover:shadow-sm group/link"
-                                >
-                                  <div className="flex items-center gap-2">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 opacity-0 group-hover/link:opacity-100 transition-opacity"></div>
-                                    <span className="line-clamp-2">{sub}</span>
-                                  </div>
-                                </Link>
-                              ))}
-                            </div>
-                            
-                            {/* View all link when not expanded */}
-                            {!expandedCategories[index] && (
-                              <button
-                                onClick={() => toggleCategory(index)}
-                                className="mt-3 text-xs text-green-600 hover:text-green-700 font-semibold flex items-center gap-1 group-hover/item:gap-2 transition-all"
-                              >
-                                View all
-                                <ChevronDown className="w-3 h-3" />
-                              </button>
-                            )}
-                          </div>
-                        </div>
-                      ))}
+                  <div className="bg-white rounded-xl shadow-xl border border-gray-200">
+                    <div className="px-6 py-5 border-b border-gray-100">
+                      <div className="text-sm font-semibold text-gray-900">Browse products</div>
+                      <div className="text-xs text-gray-500">Quickly find a category and jump in</div>
                     </div>
-                    
-                    {/* Footer with CTA */}
-                    <div className="bg-gradient-to-r from-green-600 to-green-700 px-6 py-4 flex items-center justify-between">
-                      <div className="text-white">
-                        <p className="text-sm font-semibold">Need help choosing?</p>
-                        <p className="text-xs opacity-90">Contact our experts for guidance</p>
+                    <div className="p-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {menuData.map((category, index) => (
+                          <div key={index}>
+                            <div className="text-[13px] uppercase tracking-wide text-gray-500 mb-2">{category.title}</div>
+                            <ul className="space-y-1.5">
+                              {category.subcategories.map((sub, subIndex) => (
+                                <li key={subIndex}>
+                                  <Link
+                                    href={getProductUrl(sub)}
+                                    onClick={() => setIsProductsDropdownOpen(false)}
+                                    className="group flex items-center justify-between rounded-md px-2 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                                  >
+                                    <span className="truncate">{sub}</span>
+                                    <ChevronDown className="w-3.5 h-3.5 -rotate-90 text-gray-300 group-hover:text-gray-400" />
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
                       </div>
+                    </div>
+                    <div className="px-6 py-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
                       <Link
                         href="/contact"
                         onClick={() => setIsProductsDropdownOpen(false)}
-                        className="bg-white text-green-600 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg"
+                        className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
                       >
-                        Contact Us
+                        Contact sales
+                      </Link>
+                      <Link
+                        href="/products"
+                        onClick={() => setIsProductsDropdownOpen(false)}
+                        className="text-sm text-green-700 hover:text-green-800"
+                      >
+                        View all products
                       </Link>
                     </div>
                   </div>
@@ -341,7 +299,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button onClick={toggleMenu} className="md:hidden hover:text-white transition-colors">
+          <button onClick={toggleMenu} className="md:hidden hover:text-white transition-colors p-2">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
